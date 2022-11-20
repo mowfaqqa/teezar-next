@@ -9,7 +9,7 @@ const Applayout = ({children}: AppProps) => {
   return (
     <div>
         <Navbar2 />
-        <div className='h-full py-8'>
+        <div className='h-full'>
             {children}
         </div>
         <Footer />
