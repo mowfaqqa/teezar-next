@@ -21,7 +21,7 @@
   right: 0;
   width: 45px;
   height: 30px;
-  background: transparent;
+  background: rgba(0, 0, 0, 0.37);
   z-index: 1;
   display: flex;
   justify-content: center;
@@ -32,9 +32,10 @@
 
 .menu-wrap .hamburger > div {
   position: relative;
-  width: 75%;
+  padding: 1px;
+  width: 90%;
   height: 1px;
-  background: #fff;
+  background: gold;
   display: flex;
   align-items: center;
   justify-content: center;
