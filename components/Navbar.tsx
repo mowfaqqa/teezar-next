@@ -67,11 +67,11 @@ const Navbar2 = () => {
         {/* mobile view */}
         <div className="md:hidden flex justify-between items-center hover:bg-black border-b border-solid border-white px-2">
           <div className="icons flex justify-end mx-2">
-            <Link href="/user" passHref>
-              <UserIcon className="w-5 text-white hover:text-gold-100 mx-1" />
+            <Link href="/" passHref>
+              <UserIcon className="w-5 text-white hover:text-gold-100 mx-1 cursor-pointer" />
             </Link>
             <Link href="/products" passHref>
-              <ShoppingBagIcon className="w-5 text-white hover:text-gold-100 mx-1" />
+              <ShoppingBagIcon className="w-5 text-white hover:text-gold-100 mx-1 cursor-pointer" />
             </Link>
           </div>
           <div className="text-center m-1">
@@ -82,7 +82,7 @@ const Navbar2 = () => {
           </div>
           <div className="icons flex justify-end mx-2">
             <Link href="/" passHref>
-              <SearchIcon className="w-5 text-white hover:text-gold-100 mx-1" />
+              <SearchIcon className="w-5 text-white hover:text-gold-100 mx-1 cursor-pointer" />
             </Link>
             <Hamburger />
           </div>

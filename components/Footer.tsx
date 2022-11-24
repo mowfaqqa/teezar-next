@@ -1,6 +1,7 @@
 import { LocationMarkerIcon, MailIcon, PhoneIcon } from '@heroicons/react/outline'
 import React from 'react'
 import Link from 'next/link'
+import {Facebook, Instagram,Twitter} from 'react-feather'
 
 const Footer = () => {
    return (
@@ -49,12 +50,13 @@ const Footer = () => {
             <span className='flex items-center'>
             <MailIcon width={20} height={20}/> <p>: teezarfashion@gmail.com</p>
             </span>
-            <div className="mt-3">
-               <i className="fab fa-facebook p-2"></i>
-               <i className="fab fa-twitter p-2"></i>
-               <i className="fab fa-instagram p-2"></i>
-            </div>
+            
          </div>
+         <div className="flex mt-2">
+             <Facebook size={20} fill="white" className=' hover:text-gold-100 m-2 hover:fill-gold-100' />
+             <Instagram size={20} className=' hover:text-gold-100 m-2 '/>
+             <Twitter size={20} fill="white" className=' hover:text-gold-100 hover:fill-gold-100 m-2'/>
+            </div>
       </div>
          <div className="m-2 p-1 text-center">
             <p className="font-dancing text-sm md:text-xl text-black"> &copy; Teezar fashion, 2021</p>

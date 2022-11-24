@@ -17,6 +17,8 @@ module.exports = {
       },
       backgroundImage: {
         'head-pattern': "linear-gradient(to right, rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)), url('/products/background.png')",
+        'dresses': "linear-gradient(to right, rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)), url('/products/dresses.jpg') ",
+        'accessories': "linear-gradient(to right, rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)), url('/products/accessories.jpg')",
       }
     },
   },
