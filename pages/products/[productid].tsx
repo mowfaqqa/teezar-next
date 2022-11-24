@@ -1,5 +1,8 @@
 import React, { ReactElement } from 'react'
 import Applayout from '../../components/Applayout';
+import Footer from '../../components/Footer';
+import Navbar2 from '../../components/Navbar';
+import productData from '../../components/productData';
 
 const Product = () => {
   const { id } = useParams()
@@ -61,3 +64,7 @@ export default Product
 Product.getLayout = function getLayout(page: ReactElement) {
     return <Applayout>{page}</Applayout>;
   };
+
+function useParams(): { id: any; } {
+   throw new Error('Function not implemented.');
+}

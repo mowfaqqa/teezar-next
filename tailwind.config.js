@@ -13,8 +13,11 @@ module.exports = {
       },
       fontFamily: {
         dancing: ['Dancing Script', 'cursive'],
-        roboto : ['Roboto', 'sans-serif']
+        roboto: ['Roboto', 'sans-serif']
       },
+      backgroundImage: {
+        'head-pattern': "linear-gradient(to right, rgba(0, 0, 0, 0.64), rgba(0, 0, 0, 0.64)), url('/products/background.png')",
+      }
     },
   },
   plugins: [],
