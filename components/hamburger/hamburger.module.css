@@ -21,7 +21,8 @@
   right: 0;
   width: 45px;
   height: 30px;
-  background: rgba(0, 0, 0, 0.37);
+  background: inherit;
+  border-radius: 5px;
   z-index: 1;
   display: flex;
   justify-content: center;
@@ -35,7 +36,7 @@
   padding: 1px;
   width: 90%;
   height: 1px;
-  background: gold;
+  background: #dd5e89;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -94,7 +95,7 @@
   width: 100%;
 }
 .menu-wrap .menu > div {
-  background: rgba(31, 30, 30, 0.85);
+  background: rgba(97, 4, 95, .9);
   height: 300vh;
   width: 300vw;
   border-radius: 50%;
@@ -115,7 +116,7 @@
 }
 
 .menu-wrap .menu > div > div > ul > li {
-  color: rgba(31, 30, 30, 0.85);
+  color:  rgba(247, 187, 151, 1);
   padding: 1.5rem;
   list-style: none;
   font-size: 1.3rem;
@@ -127,5 +128,5 @@
   transition: color 0.2s ease;
 }
 .menu-wrap .menu > div > div > ul > li > a:hover {
-  color: #ffd333;
+  color: rgba(247, 187, 151, 1);
 }
