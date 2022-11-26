@@ -30,12 +30,12 @@ export default function CenterMode() {
   };
 
   return (
-          <div className="overflow-hidden my-4">
+          <div className="overflow-hidden my-4 border shadow-lg">
     
             <Slider {...settings} className="my-8 p-2">
             {items.map((item) => {
                return (
-                <Div className="bg-white p-2 mx-5 shadow-inner">
+                <Div className="bg-white  p-2 mx-5 shadow-inner">
                 <Image src={item.img} alt="sample" className="mx-auto"/>
                 <p className="text-center text-base md:text-xl font-roboto mt-2">{item.name}</p>
               </Div>
@@ -46,51 +46,6 @@ export default function CenterMode() {
           </div>
         );
 }
-
-// class CenterMode extends Component {
-//   render() {
-//     const settings = {
-//       dots: true,
-//       className: "center",
-//       // centerMode: true,
-//       infinite: true,
-//       autoplay: true,
-//       speed: 2000,
-//       centerPadding: "60px",
-//       slidesToShow: 3,
-//       // speed: 500,
-//       cssEase : "linear",
-//       responsive : [
-//          {
-//             breakpoint : 600,
-//             settings: {
-//                slidesToShow : 2,
-//                slidesToScroll: 1,
-//                initiallSlide: 2
-//             }
-//          }
-//       ]
-
-//     };
-//     return (
-//       <div className="overflow-hidden my-4">
-
-//         <Slider {...settings} className="my-8 p-2">
-//         {items.map((item) => {
-//            return (
-//             <Div className="bg-white p-2 mx-5 shadow-inner">
-//             <Image src={item.img} alt="sample" className="mx-auto"/>
-//             <p className="text-center text-base md:text-xl font-roboto mt-2">{item.name}</p>
-//           </Div>
-//            )
-//         })}
-//         </Slider>
-
-//       </div>
-//     );
-//   }
-// }
-// export default CenterMode
 
 const Img = styled.img`
   width: 100%;

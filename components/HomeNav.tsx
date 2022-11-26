@@ -8,11 +8,11 @@ import {
 import { Facebook, Instagram, Twitter } from "react-feather";
 import Hamburger from "./hamburger/Hamburger";
 
-const Navbar2 = () => {
+const HomeNav = () => {
   return (
     <div>
-      <div className="bg-head-pattern h-fit w-full shadow-lg">
-        <div className="hidden md:block bg-transparent border-b border-solid px-6 top-0 z-10 hover:bg-black ">
+      <div className="h-fit w-full ">
+        <div className="hidden md:block bg-transparent border-b border-solid border-white px-6 top-0 z-10 hover:bg-black ">
           <div className="bg-transparent pb-2 mb-3 flex justify-between items-center">
             <div className="flex justify-start">
               <Facebook
@@ -105,4 +105,4 @@ const Navbar2 = () => {
   );
 };
 
-export default Navbar2;
+export default HomeNav;
