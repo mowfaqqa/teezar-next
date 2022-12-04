@@ -14,7 +14,7 @@ const Footer = () => {
         <div className="mb-3 flex flex-col">
           <h5 className="font-dancing text-xl font-bold text-gold-100">Shop</h5>
           <Link href="/bespoke" passHref>
-            <span className="text-black font-roboto">Bespoke</span>
+            <span className="text-black">Bespoke</span>
           </Link>
           <Link href="/accessories">
             <span className="text-black font-roboto ">Accessories</span>

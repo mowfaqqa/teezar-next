@@ -14,7 +14,8 @@ module.exports = {
       },
       fontFamily: {
         dancing: ['Dancing Script', 'cursive'],
-        roboto: ['Roboto', 'sans-serif']
+        roboto: ['Roboto', 'sans-serif'],
+        nunito:['Nunito']
       },
       backgroundImage: {
         'head-pattern': "linear-gradient(to right, rgba(221, 94, 137, 1), rgba(247, 187, 151, 1))",

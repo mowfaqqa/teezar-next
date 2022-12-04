@@ -19,9 +19,9 @@ const Products = () => {
                   <div>
 
                   <img src={item.img} alt="product" className="w-full mx-auto rounded-md h-5/6 object-cover"/>
-                  <div className="text-center">
-                      <h5>{item.product_name}</h5>
-                      <h6>{item.price}</h6>
+                  <div className="ml-3 leading-3">
+                      <p className='capitalize text-lg'>{item.product_name}</p>
+                      <p className='font-black'>{item.price}</p>
                   </div>
                   </div>
                 </Link>
