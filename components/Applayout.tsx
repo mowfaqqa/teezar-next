@@ -1,20 +1,21 @@
-import React, { ReactNode } from 'react'
-import Footer from './Footer'
-import Navbar2 from './Navbar'
+import React, { ReactNode } from "react";
+import Footer from "./Footer";
+import Navbar2 from "./Navbar";
+import { Context } from "../context/Context";
 
 interface AppProps {
-    children: ReactNode
+  children: ReactNode;
 }
-const Applayout = ({children}: AppProps) => {
+const Applayout = ({ children }: AppProps) => {
   return (
-    <div>
+    <Context>
+      <div>
         <Navbar2 />
-        <div className='h-full'>
-            {children}
-        </div>
+        <div className="h-full">{children}</div>
         <Footer />
-    </div>
-  )
-}
+      </div>
+    </Context>
+  );
+};
 
-export default Applayout
+export default Applayout;
