@@ -9,8 +9,8 @@ import { Facebook, Instagram, Twitter } from "react-feather";
 
 const Footer = () => {
   return (
-    <div className="m-2 border-t border-solid border-gray-300 p-3">
-      <div className="bg-white border-b border-solid border-gray-300 p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
+    <div className="m-2  border-t border-solid border-gray-300 p-3">
+      <div className="bg-[#f2f2f2] border-b border-solid border-gray-300 p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         <div className="mb-3 flex flex-col">
           <h5 className="font-dancing text-xl font-bold text-gold-100">Shop</h5>
           <Link href="/bespoke" passHref>
