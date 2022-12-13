@@ -138,13 +138,13 @@ const HomeNav = () => {
             )}
           </div>
           <div className="text-center m-1 flex-1">
-            <h1 className="text-white text-8xl font-dancing">
+            <h1 className="text-white text-7xl font-dancing">
               <Link href="/">Teezar</Link>
             </h1>
             <h6 className="text-white text-base font-dancing my-2">Fashion</h6>
           </div>
           <div className="flex flex-1 justify-end mx-2">
-            {loggedUser ? (
+            {!loggedUser ? (
               <button
                 type="button"
                 onClick={handleSignin}

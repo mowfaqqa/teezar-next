@@ -58,7 +58,7 @@ function CenterMode({
           return (
             <div
               key={item.name}
-              className="bg-white p-2 mx-5 shadow-inner w-3/5 md:w-full"
+              className="bg-[#f2f2f2] p-2 mx-5 shadow-inner w-3/5 md:w-full"
             >
               <Image src={item.img} alt="sample" className="mx-auto" />
               <p className="text-center text-base md:text-xl font-roboto mt-2">

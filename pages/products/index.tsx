@@ -3,11 +3,11 @@ import Link from 'next/link';
 import React, { ReactElement } from 'react'
 import Applayout from '../../components/Applayout';
 import productData from '../../components/productData';
-
+import { Context } from "../../context/Context";
 
 const Products = () => {
   return (
-    <>
+    <Context>
     <Head>
       <title>Teezar_Fashion | Products</title>
     </Head>
@@ -29,7 +29,7 @@ const Products = () => {
             )
           })}
       </div>
-    </>
+    </Context>
   )
 }
 

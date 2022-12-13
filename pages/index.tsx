@@ -6,11 +6,12 @@ import Link from "next/link";
 import Head from "next/head";
 import HomeNav from "../components/HomeNav";
 import Footer from "../components/Footer";
+import { Context } from "../context/Context";
 
 
 const Home = () => {
   return (
-    <>
+    <Context>
       <Head>
         <title>Teezar_Fashion | NG</title>
       </Head>
@@ -31,7 +32,7 @@ const Home = () => {
       <Category />
       <Gallery images={images} />
       <Footer/>
-    </>
+    </Context>
   );
 };
 

@@ -120,26 +120,26 @@ const Navbar2 = () => {
             <Link href="/search" passHref>
               <Search
                 size={20}
-                className="text-white hover:text-gold-100 w-8 transition-all duration-300 ease-linear cursor-pointer"
+                className="text-white hover:text-gold-300 w-8 transition-all duration-300 ease-linear cursor-pointer"
               />
             </Link>
             <Link href="/products" passHref>
               <ShoppingCart
                 size={20}
-                className="text-white hover:text-gold-100  transition-all duration-300 ease-linear cursor-pointer"
+                className="text-white hover:text-gold-300  transition-all duration-300 ease-linear cursor-pointer"
               />
             </Link>
             {loggedUser && (
               <button
                 onClick={handleSignout}
-                className=" text-white hover:text-gold-100 transition-all duration-300 ease-linear font-medium"
+                className=" text-white hover:text-gold-300 transition-all duration-300 ease-linear font-medium"
               >
                 <LogOut size={20} />
               </button>
             )}
           </div>
           <div className="text-center m-1">
-            <h1 className="text-white text-8xl font-dancing">
+            <h1 className="text-white text-7xl font-dancing">
               <Link href="/">Teezar</Link>
             </h1>
             <h6 className="text-white text-sm font-dancing my-2">Fashion</h6>
