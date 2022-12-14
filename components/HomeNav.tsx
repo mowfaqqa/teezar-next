@@ -18,7 +18,7 @@ const HomeNav = () => {
     console.log("signed out");
   };
 
-  console.log(loggedUser);
+  // console.log(loggedUser);
 
   return (
     <div>
