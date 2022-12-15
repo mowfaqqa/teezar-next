@@ -6,6 +6,7 @@ import React, {
   useState,
 } from "react";
 import { auth, onAuthStateChanged } from "../lib/firebase";
+import {CartProvider} from 'react-use-cart'
 
 type Children = {
   children: ReactNode;
@@ -45,7 +46,9 @@ export function Context({ children }: Children) {
   
   return (
     <stateContext.Provider value={{ loggedUser }}>
+      <CartProvider>
       {children}
+      </CartProvider>
     </stateContext.Provider>
   );
 }

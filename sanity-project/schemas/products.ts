@@ -23,6 +23,11 @@ export default {
       }
     },
     {
+      name: 'id',
+      title: 'Id',
+      type: 'string',
+    },
+    {
       name: 'price',
       title: 'Price',
       type: 'number',
@@ -36,6 +41,7 @@ export default {
       name: 'category',
       title: 'Category',
       type: 'string',
-    }
+    },
+    
   ]
 }

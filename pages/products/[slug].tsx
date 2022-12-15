@@ -1,14 +1,13 @@
-import React, { ReactElement } from "react";
+import React, { ReactElement, useState } from "react";
 import Applayout from "../../components/Applayout";
-import productData from "../../components/productData";
 import Head from "next/head";
-import { GetStaticProps, GetStaticPaths, InferGetStaticPropsType } from "next";
+import { GetStaticProps, GetStaticPaths } from "next";
 import { client, urlFor } from "../../lib/sanityConfig";
-import Image from "next/image";
+import { useCart } from "react-use-cart";
 
-type Data={
-   data:Item,
-}
+type Data = {
+  data: Item;
+};
 interface Item {
   name: string;
   image: any;
@@ -16,6 +15,7 @@ interface Item {
   desc: string;
   price: number;
   slug: any;
+  id: string;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -38,23 +38,31 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
   const slug = context.params.slug;
   const productQuery = `*[slug.current == "${slug}"]`;
   const product = await client.fetch(productQuery);
- const [data]=product
+  const [data] = product;
   return {
     props: { data },
   };
 };
 
 const Product = ({ data }: Data) => {
-  console.log(data);
-  
+  const [num, setNum] = useState(0);
+  const { addItem, items, removeItem } = useCart();
+  console.log(items);
+
+  // if(items.includes)
+
   return (
     <>
       <Head>
         <title>Teezar_Fashion | Products</title>
       </Head>
-      {data?(<div className="grid grid-cols-1 md:grid-cols-3  p-4">
+      <div className="grid grid-cols-1 md:grid-cols-3  p-4">
         <div className="col-span-2">
-          <img src={urlFor(data.image).url()} alt="product" className="w-5/6 mx-auto" />
+          <img
+            src={urlFor(data.image).url()}
+            alt="product"
+            className="w-5/6 mx-auto"
+          />
         </div>
         <div className="col-span-1 md:border-l md:border-solid md:border-gray-400 py-3">
           <h2 className="text-3xl md:text-5xl font-serif text-center text-gold-200">
@@ -103,31 +111,42 @@ const Product = ({ data }: Data) => {
           </p>
           <div className="mt-8 grid grid-cols-2">
             <div className="flex justify-center items-center">
-              <button
+            <button
                 type="button"
                 className="border px-3 py-1 border-solid border-gray-400 hover:border-gold-100"
-              >
-                +
-              </button>
-              <p className="border px-5 py-1 border-solid border-gray-400">1</p>
-              <button
-                type="button"
-                className="border px-3 py-1 border-solid border-gray-400 hover:border-gold-100"
+                onClick={() => {
+                  if (num == 0) {
+                    return;
+                  }
+                  setNum(num - 1);
+                }}
               >
                 -
               </button>
+              <p className="border px-5 py-1 border-solid border-gray-400">
+                {num}
+              </p>
+              <button
+                type="button"
+                className="border px-3 py-1 border-solid border-gray-400 hover:border-gold-100"
+                onClick={() => setNum(num + 1)}
+              >
+                +
+              </button>
+              
             </div>
             <div className="text-center">
               <button
                 type="button"
-                className="border px-3 py-1 border-gold-100 bg-gold-100 text-white hover:bg-white hover:text-gold-100 hover:border hover:border-gold-300 font-semibold rounded transition-all duration-300 shadow-md"
+                onClick={()=>addItem(data,num)}
+                className="border px-3 py-1 border-gold-100 bg-gold-100 text-white hover:bg-white hover:text-gold-100 hover:border hover:border-gold-300 font-semibold rounded transition-all duration-300 shadow-md w-1/2"
               >
-                Add Cart
+                + Add To Cart
               </button>
             </div>
           </div>
         </div>
-      </div>):(<p>NILL</p>)}
+      </div>
     </>
   );
 };
