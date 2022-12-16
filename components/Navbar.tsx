@@ -36,7 +36,7 @@ const Navbar2 = () => {
                   Search
                 </div>
               </Link>
-              <Link href="/products" passHref>
+              <Link href="/cart" passHref>
                 <div className="text-white grid gap-3">
                   <ShoppingCart
                     size={25}
@@ -123,7 +123,7 @@ const Navbar2 = () => {
                 className="text-white hover:text-gold-300 w-8 transition-all duration-300 ease-linear cursor-pointer"
               />
             </Link>
-            <Link href="/products" passHref>
+            <Link href="/cart" passHref>
               <ShoppingCart
                 size={20}
                 className="text-white hover:text-gold-300  transition-all duration-300 ease-linear cursor-pointer"

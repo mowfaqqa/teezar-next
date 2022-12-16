@@ -1,6 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import React, { ReactElement, FC } from 'react'
+import React, { ReactElement } from 'react'
 import Applayout from '../../components/Applayout';
 import { client, urlFor } from '../../lib/sanityConfig';
 import { GetStaticProps, InferGetStaticPropsType } from "next";
@@ -28,7 +28,7 @@ export const getStaticProps:GetStaticProps = async () => {
 
 const Products = ({data}:InferGetStaticPropsType<typeof getStaticProps>) => {
 
-console.log('data',data);
+// console.log('data',data);
 
 
 
