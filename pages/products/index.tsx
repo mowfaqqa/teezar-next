@@ -1,8 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
-import React, { ReactElement } from 'react'
+import React, { ReactElement, useEffect, useState } from 'react'
 import Applayout from '../../components/Applayout';
 import { client, urlFor } from '../../lib/sanityConfig';
+import { useCart } from "react-use-cart";
+import { ShoppingCart } from "react-feather";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 
 
@@ -26,9 +28,17 @@ export const getStaticProps:GetStaticProps = async () => {
   };
 };
 
+ 
+
 const Products = ({data}:InferGetStaticPropsType<typeof getStaticProps>) => {
 
-// console.log('data',data);
+  const [render, setRender] = useState(false);
+  useEffect(() => {
+    setRender(true);
+  }, []);
+  //react use cart
+  const { totalUniqueItems } =
+    useCart();
 
 
 
@@ -37,6 +47,21 @@ const Products = ({data}:InferGetStaticPropsType<typeof getStaticProps>) => {
     <Head>
       <title>Teezar_Fashion | Products</title>
     </Head>
+    <div className="fixed right-10 mt-10">
+        <Link href="/cart" passHref>
+          <div className="relative hover:scale-105 transition-all duration-100 ease-linear">
+            <div className="w-5 h-5  rounded-full bg-red-600 text-white text-sm absolute top-6 left-6 grid place-items-center cursor-pointer ">
+              {render ? totalUniqueItems : ""}
+            </div>
+            <div>
+              <ShoppingCart
+                size={34}
+                className="text-gold-100 hover:scale  transition-all duration-300 ease-linear cursor-pointer"
+              />
+            </div>
+          </div>
+        </Link>
+      </div>
       <div className="grid grid-cols-2 md:grid-cols-4 my-2 text-gold-100 font-semibold">
           {data.map((item:Item) => {
             const src = urlFor(item.image).url();

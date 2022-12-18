@@ -47,7 +47,7 @@ const CenterMode: FC<Data> = ({ data }: Data) => {
             <div key={item.name}>
             <div
               
-              className="bg-[#f2f2f2] p-2 mx-5 shadow-inner w-3/5 h-[80vh] md:w-full relative"
+              className="bg-[#f2f2f2] p-2 mx-5 shadow-inner h-[45vh] md:h-[70vh] w-[90%] md:w-full relative"
             >
               <Image loader={()=>src}
                 src={src} unoptimized

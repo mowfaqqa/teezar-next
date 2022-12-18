@@ -1,13 +1,17 @@
-import React from "react";
 import Link from "next/link";
-import { LogOut, Search, ShoppingCart } from "react-feather";
+import { LogOut, Search } from "react-feather";
 import { provider, auth, signInWithRedirect, signOut } from "../lib/firebase";
 import Hamburger from "./hamburger/Hamburger";
 import { useStateContext } from "../context/Context";
 
-const Navbar2 = () => {
 
+
+
+
+const Navbar2 = () => {
   const { loggedUser } = useStateContext();
+  
+  
 
   const handleSignin = async () => {
     await signInWithRedirect(auth, provider);
@@ -19,32 +23,19 @@ const Navbar2 = () => {
     console.log("signed out");
   };
 
-
-
   return (
     <div>
       <div className="bg-head-pattern h-fit w-full shadow-lg">
         <div className="hidden md:block bg-transparent border-b border-solid px-6 top-0 z-10 hover:bg-black ">
           <div className="bg-transparent pb-2 mb-3 flex justify-between items-center">
-          <div className="grid grid-cols-[80px_80px_80px] w-1/3 justify-start flex-1">
-              <Link href="/search" passHref>
-                <div className="text-white grid gap-3">
-                  <Search
-                    size={25}
-                    className="text-white hover:text-gold-100 w-8 transition-all duration-300 ease-linear cursor-pointer"
-                  />
-                  Search
-                </div>
-              </Link>
-              <Link href="/cart" passHref>
-                <div className="text-white grid gap-3">
-                  <ShoppingCart
-                    size={25}
-                    className="text-white hover:text-gold-100  transition-all duration-300 ease-linear cursor-pointer"
-                  />
-                  Cart
-                </div>
-              </Link>
+            <div className="grid grid-cols-[80px_80px_80px] w-1/3 justify-start flex-1">
+              <div className="text-white grid gap-3">
+                <Search
+                  size={25}
+                  className="text-white hover:text-gold-100 w-8 transition-all duration-300 ease-linear cursor-pointer"
+                />
+                Search
+              </div>
               {loggedUser && (
                 <div className="text-white grid gap-3">
                   <button
@@ -97,7 +88,7 @@ const Navbar2 = () => {
                 Home
               </a>
             </Link>
-            <Link href="/shop" passHref>
+            <Link href="/products" passHref>
               <a className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
                 Shop
               </a>
@@ -116,19 +107,13 @@ const Navbar2 = () => {
         </div>
         {/* mobile view */}
         <div className="md:hidden flex justify-between items-center border-b border-solid border-white px-2">
-        <div className="grid grid-cols-[50px_50px_50px] justify-start flex-1">
-            <Link href="/search" passHref>
+          <div className="grid grid-cols-[50px_50px_50px] justify-start flex-1">
+            <div>
               <Search
                 size={20}
                 className="text-white hover:text-gold-300 w-8 transition-all duration-300 ease-linear cursor-pointer"
               />
-            </Link>
-            <Link href="/cart" passHref>
-              <ShoppingCart
-                size={20}
-                className="text-white hover:text-gold-300  transition-all duration-300 ease-linear cursor-pointer"
-              />
-            </Link>
+            </div>
             {loggedUser && (
               <button
                 onClick={handleSignout}
@@ -145,7 +130,7 @@ const Navbar2 = () => {
             <h6 className="text-white text-sm font-dancing my-2">Fashion</h6>
           </div>
           <div className=" flex flex-1 justify-end mx-2">
-            {loggedUser ? (
+            {!loggedUser ? (
               <button
                 type="button"
                 onClick={handleSignin}

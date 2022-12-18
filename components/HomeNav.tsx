@@ -1,24 +1,27 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { LogOut, Search, ShoppingCart } from "react-feather";
 import { provider, auth, signInWithRedirect, signOut } from "../lib/firebase";
 import Hamburger from "./hamburger/Hamburger";
 import { useStateContext } from "../context/Context";
+import { useCart } from "react-use-cart";
 
 const HomeNav = () => {
   const { loggedUser } = useStateContext();
+  const [render, setRender] = useState(false);
+  const { totalUniqueItems } = useCart();
+  useEffect(() => {
+    setRender(true);
+  }, []);
 
   const handleSignin = async () => {
     await signInWithRedirect(auth, provider);
     console.log("signed in");
-    // console.log(loggedUser);
   };
   const handleSignout = async () => {
     await signOut(auth);
     console.log("signed out");
   };
-
-  // console.log(loggedUser);
 
   return (
     <div>
@@ -26,22 +29,26 @@ const HomeNav = () => {
         <div className="hidden md:block bg-transparent border-b border-solid border-white px-6 top-0 z-10 hover:bg-black ">
           <div className="bg-transparent pb-2 mb-3 flex justify-between items-center">
             <div className="grid grid-cols-[80px_80px_80px] w-1/3 justify-start flex-1">
-              <Link href="/search" passHref>
-                <div className="text-white grid gap-3">
-                  <Search
-                    size={25}
-                    className="text-white hover:text-gold-100 w-8 transition-all duration-300 ease-linear cursor-pointer"
-                  />
-                  Search
-                </div>
-              </Link>
+              <div className="text-white grid gap-3">
+                <Search
+                  size={25}
+                  className="text-white hover:text-gold-100 w-8 transition-all duration-300 ease-linear cursor-pointer"
+                />
+                Search
+              </div>
+              <Search>
               <Link href="/cart" passHref>
-                <div className="text-white grid gap-3">
-                  <ShoppingCart
-                    size={25}
-                    className="text-white hover:text-gold-100  transition-all duration-300 ease-linear cursor-pointer"
-                  />
-                  Cart
+                <div className="relative">
+                  <div className="w-5 h-5  rounded-full bg-red-600 text-white text-sm absolute bottom-7 right-11 grid place-items-center cursor-pointer ">
+                    {render ? totalUniqueItems : ""}
+                  </div>
+                  <div className="text-white grid gap-3">
+                    <ShoppingCart
+                      size={25}
+                      className="text-white hover:text-gold-100  transition-all duration-300 ease-linear cursor-pointer"
+                    />
+                    Cart
+                  </div>
                 </div>
               </Link>
               {loggedUser && (
@@ -96,7 +103,7 @@ const HomeNav = () => {
                 Home
               </a>
             </Link>
-            <Link href="/shop" passHref>
+            <Link href="/products" passHref>
               <a className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
                 Shop
               </a>
@@ -123,10 +130,16 @@ const HomeNav = () => {
               />
             </Link>
             <Link href="/cart" passHref>
-              <ShoppingCart
-                size={20}
-                className="text-white hover:text-gold-100  transition-all duration-300 ease-linear cursor-pointer"
-              />
+              <div className="relative">
+                <div className="w-5 h-5 rounded-full bg-red-600 text-white text-sm absolute top-2 left-4 grid place-items-center cursor-pointer">
+                  {render ? totalUniqueItems : ""}
+                </div>
+
+                <ShoppingCart
+                  size={20}
+                  className="text-white hover:text-gold-300  transition-all duration-300 ease-linear cursor-pointer"
+                />
+              </div>
             </Link>
             {loggedUser && (
               <button

@@ -1,9 +1,11 @@
-import React, { ReactElement, useState } from "react";
+import React, { ReactElement, useState, useEffect } from "react";
 import Applayout from "../../components/Applayout";
 import Head from "next/head";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { client, urlFor } from "../../lib/sanityConfig";
 import { useCart } from "react-use-cart";
+import { ShoppingCart } from "react-feather";
+import Link from "next/link";
 
 type Data = {
   data: Itemz;
@@ -55,8 +57,13 @@ const Product = ({ data }: Data) => {
     addItem({ ...data, color, size });
   };
 
+  const [render, setRender] = useState(false);
+  useEffect(() => {
+    setRender(true);
+  }, []);
   //react use cart
-  const { addItem, items, removeItem, updateItemQuantity } = useCart();
+  const { addItem, items, removeItem, updateItemQuantity, totalUniqueItems } =
+    useCart();
   //get same item as data
   const [item] = items.filter((item) => item.id == data.id);
   // console.log(item);
@@ -66,6 +73,22 @@ const Product = ({ data }: Data) => {
       <Head>
         <title>Teezar_Fashion | Products</title>
       </Head>
+      <div className="fixed right-10 mt-10">
+        <Link href="/cart" passHref>
+          <div className="relative hover:scale-105 transition-all duration-100 ease-linear ">
+            <div className="w-5 h-5  rounded-full bg-red-600 text-white text-sm absolute top-6 left-6 grid place-items-center cursor-pointer ">
+              {render ? totalUniqueItems : ""}
+            </div>
+            <div>
+              <ShoppingCart
+                size={34}
+                className="text-gold-100 hover:scale  transition-all duration-300 ease-linear cursor-pointer"
+              />
+            </div>
+          </div>
+        </Link>
+      </div>
+
       <div className="grid grid-cols-1 md:grid-cols-3  p-4">
         <div className="col-span-2">
           <img
@@ -75,10 +98,7 @@ const Product = ({ data }: Data) => {
           />
         </div>
         <div>
-          <form
-            onSubmit={handleSubmit}
-            className="col-span-1  py-3"
-          >
+          <form onSubmit={handleSubmit} className="col-span-1  py-3">
             <h2 className="text-3xl md:text-5xl font-serif text-center text-gold-200">
               {data?.name}
             </h2>
@@ -134,49 +154,53 @@ const Product = ({ data }: Data) => {
             </p>
             <div className="mt-8 mx-auto grid grid-cols-1">
               <div className="text-center">
-                {!item &&<button
-                  type="submit"
-                  className="border px-3 py-1 border-gold-100 bg-gold-100 text-white hover:bg-white hover:text-gold-100 hover:border hover:border-gold-300 font-semibold rounded transition-all duration-300 shadow-md w-1/2"
-                >
-                  + Add To Cart
-                </button>}
+                {!item && (
+                  <button
+                    type="submit"
+                    className="border px-3 py-1 border-gold-100 bg-gold-100 text-white hover:bg-white hover:text-gold-100 hover:border hover:border-gold-300 font-semibold rounded transition-all duration-300 shadow-md w-1/2"
+                  >
+                    + Add To Cart
+                  </button>
+                )}
               </div>
             </div>
           </form>
 
-          {item && <div className="grid justify-center">
-            <div className="flex justify-center items-center">
-              <button
-                type="button"
-                className="border mr-1 px-3 py-1 border-gold-100 bg-gold-100 text-white font-semibold rounded transition-all duration-300 shadow-md w-full"
-                onClick={() =>
-                  updateItemQuantity(item.id, (item?.quantity as number) - 1)
-                }
-              >
-                -
-              </button>
-              <p className="border px-5 py-1 border-solid border-gray-400 text-gold-100 font-bold">
-                {item?.quantity}
-              </p>
-              <button
-                type="button"
-                className="border ml-1 px-3 py-1 border-gold-100 bg-gold-100 text-white font-semibold rounded transition-all duration-300 shadow-md w-full hover:scale-105"
-                onClick={() =>
-                  updateItemQuantity(item.id, (item?.quantity as number) + 1)
-                }
-              >
-                +
-              </button>
+          {item && (
+            <div className="grid justify-center">
+              <div className="flex justify-center items-center">
+                <button
+                  type="button"
+                  className="border mr-1 px-3 py-1 border-gold-100 bg-gold-100 text-white font-semibold rounded transition-all duration-300 shadow-md w-full"
+                  onClick={() =>
+                    updateItemQuantity(item.id, (item?.quantity as number) - 1)
+                  }
+                >
+                  -
+                </button>
+                <p className="border px-5 py-1 border-solid border-gray-400 text-gold-100 font-bold">
+                  {item?.quantity}
+                </p>
+                <button
+                  type="button"
+                  className="border ml-1 px-3 py-1 border-gold-100 bg-gold-100 text-white font-semibold rounded transition-all duration-300 shadow-md w-full hover:scale-105"
+                  onClick={() =>
+                    updateItemQuantity(item.id, (item?.quantity as number) + 1)
+                  }
+                >
+                  +
+                </button>
+              </div>
+              <div>
+                <button
+                  className="border mt-3 px-3 py-1 border-gold-100 bg-gold-100 text-white hover:bg-white hover:text-gold-100 hover:border hover:border-gold-300 font-semibold rounded transition-all duration-300 shadow-md w-full hover:scale-105"
+                  onClick={() => removeItem(item.id)}
+                >
+                  Remove &times;
+                </button>
+              </div>
             </div>
-            <div>
-              <button
-                className="border mt-3 px-3 py-1 border-gold-100 bg-gold-100 text-white hover:bg-white hover:text-gold-100 hover:border hover:border-gold-300 font-semibold rounded transition-all duration-300 shadow-md w-full hover:scale-105"
-                onClick={() => removeItem(item.id)}
-              >
-                Remove &times;
-              </button>
-            </div>
-          </div>}
+          )}
         </div>
       </div>
     </>
