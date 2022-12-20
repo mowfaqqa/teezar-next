@@ -1,17 +1,19 @@
 import Image, { StaticImageData } from "next/image";
-import React from "react";
+import React, { FC } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
-import items from "./carouselData";
+// import items from "./carouselData";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { client } from "../../lib/sanityConfig";
-import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { urlFor } from "../../lib/sanityConfig";
 
-export const getStaticProps: GetStaticProps = async () => {
-  const carouselQuery = '*[ _type == "carousel"]';
-  const carouselData = await client.fetch(carouselQuery);
+type Data = any;
+interface Item {
+  name: string;
+  image: any;
+}
 
+<<<<<<< HEAD
   return {
     props: {
       ...carouselData,
@@ -23,6 +25,10 @@ function CenterMode({
   carouselData,
 }: InferGetStaticPropsType<typeof getStaticProps>) {
   console.log(carouselData);
+=======
+const CenterMode: FC<Data> = ({ data }: Data) => {
+  // console.log(data);
+>>>>>>> 8d710bd529ac8ecaf45d12159ec6941f6de78622
 
   var settings = {
     dots: true,
@@ -46,31 +52,37 @@ function CenterMode({
     ],
   };
 
-  type Item = {
-    name: string | React.Key;
-    img: StaticImageData;
-  };
-
   return (
     <div className="overflow-hidden my-4 border shadow-lg">
       <Slider {...settings} className="my-8 p-2">
-        {items.map((item: Item) => {
+        {data.map((item: Item) => {
+          const src = urlFor(item.image).url();
           return (
+            <div key={item.name}>
             <div
-              key={item.name}
-              className="bg-white p-2 mx-5 shadow-inner w-3/5 md:w-full"
+              
+              className="bg-[#f2f2f2] p-2 mx-5 shadow-inner h-[45vh] md:h-[70vh] w-[90%] md:w-full relative"
             >
-              <Image src={item.img} alt="sample" className="mx-auto" />
+              <Image loader={()=>src}
+                src={src} unoptimized
+                layout="fill"
+                objectFit="contain"
+                alt="sample"
+                className="mx-auto relative "
+              />
+              </div>
               <p className="text-center text-base md:text-xl font-roboto mt-2">
                 {item.name}
               </p>
+            
             </div>
+            
           );
         })}
       </Slider>
     </div>
   );
-}
+};
 
 export default CenterMode;
 

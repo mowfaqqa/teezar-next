@@ -1,4 +1,4 @@
-import React from "react";
+import React, { FC } from "react";
 import CenterMode from "../components/carousel/Carousel";
 import Category from "../components/Category/Category";
 import Gallery from "../components/Gallery/Gallery";
@@ -6,11 +6,30 @@ import Link from "next/link";
 import Head from "next/head";
 import HomeNav from "../components/HomeNav";
 import Footer from "../components/Footer";
+import { Context } from "../context/Context";
+import { client } from "../lib/sanityConfig";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
 
+// interface Data{
 
-const Home = () => {
+// }
+
+export const getStaticProps:GetStaticProps = async () => {
+  const carouselQuery = '*[ _type == "carousel"]';
+  const data = await client.fetch(carouselQuery);
+
+  return {
+    props: {
+      data
+    },
+  };
+};
+
+const Home: FC = ({data}:InferGetStaticPropsType<typeof getStaticProps>) => {
+// console.log('carousel', data);
+
   return (
-    <>
+    <Context>
       <Head>
         <title>Teezar_Fashion | NG</title>
       </Head>
@@ -22,7 +41,7 @@ const Home = () => {
           Teezar Fashion
         </h3>
       </div>
-      <CenterMode />
+      <CenterMode data={data} />
       <div className="text-center my-8">
         <Link href="/products">
           <a className="bg-gold-100 hover:bg-gold-300 transition-all duration-300 py-2 px-8 text-white font-semibold rounded shadow-md">Shop Now</a>
@@ -31,7 +50,7 @@ const Home = () => {
       <Category />
       <Gallery images={images} />
       <Footer/>
-    </>
+    </Context>
   );
 };
 
