@@ -13,22 +13,8 @@ interface Item {
   image: any;
 }
 
-<<<<<<< HEAD
-  return {
-    props: {
-      ...carouselData,
-    },
-  };
-};
-
-function CenterMode({
-  carouselData,
-}: InferGetStaticPropsType<typeof getStaticProps>) {
-  console.log(carouselData);
-=======
 const CenterMode: FC<Data> = ({ data }: Data) => {
   // console.log(data);
->>>>>>> 8d710bd529ac8ecaf45d12159ec6941f6de78622
 
   var settings = {
     dots: true,
