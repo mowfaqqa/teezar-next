@@ -1,47 +1,53 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { LogOut, Search, ShoppingCart } from "react-feather";
 import { provider, auth, signInWithRedirect, signOut } from "../lib/firebase";
 import Hamburger from "./hamburger/Hamburger";
 import { useStateContext } from "../context/Context";
+// @ts-ignore  
+import { useCart } from "react-use-cart";
 
 const HomeNav = () => {
   const { loggedUser } = useStateContext();
+  const [render, setRender] = useState(false);
+  const { totalUniqueItems } = useCart();
+  useEffect(() => {
+    setRender(true);
+  }, []);
 
   const handleSignin = async () => {
     await signInWithRedirect(auth, provider);
-    console.log("signed in");
-    // console.log(loggedUser);
+    
   };
   const handleSignout = async () => {
     await signOut(auth);
-    console.log("signed out");
   };
-
-  console.log(loggedUser);
 
   return (
     <div>
-      <div className="h-fit w-full ">
+      <div className="h-fit w-full overflow-hidden">
         <div className="hidden md:block bg-transparent border-b border-solid border-white px-6 top-0 z-10 hover:bg-black ">
           <div className="bg-transparent pb-2 mb-3 flex justify-between items-center">
             <div className="grid grid-cols-[80px_80px_80px] w-1/3 justify-start flex-1">
-              <Link href="/search" passHref>
-                <div className="text-white grid gap-3">
-                  <Search
-                    size={25}
-                    className="text-white hover:text-gold-100 w-8 transition-all duration-300 ease-linear cursor-pointer"
-                  />
-                  Search
-                </div>
-              </Link>
-              <Link href="/products" passHref>
-                <div className="text-white grid gap-3">
-                  <ShoppingCart
-                    size={25}
-                    className="text-white hover:text-gold-100  transition-all duration-300 ease-linear cursor-pointer"
-                  />
-                  Cart
+              <div className="text-white grid gap-3">
+                <Search
+                  size={25}
+                  className="text-white hover:text-gold-100 w-8 transition-all duration-300 ease-linear cursor-pointer"
+                />
+                Search
+              </div>
+              <Link href="/cart" passHref>
+                <div className="relative">
+                  <div className="w-5 h-5 rounded-full bg-red-600 text-white text-sm absolute bottom-7 right-11 grid place-items-center cursor-pointer ">
+                    {render ? totalUniqueItems : ""}
+                  </div>
+                  <div className="text-white grid gap-3">
+                    <ShoppingCart
+                      size={25}
+                      className="text-white hover:text-gold-100  transition-all duration-300 ease-linear cursor-pointer"
+                    />
+                    Cart
+                  </div>
                 </div>
               </Link>
               {loggedUser && (
@@ -71,7 +77,7 @@ const HomeNav = () => {
                 <button
                   type="button"
                   onClick={handleSignin}
-                  className="text-white border-2 rounded font-medium px-10 py-1 tracking-widest mx-3  hover:text-gold-100  hover:border-gold-100 transition-all duration-300 ease-linear"
+                  className=" text-white border-2 rounded font-medium px-10 py-1 tracking-widest mx-3  hover:text-gold-100  hover:border-gold-100 transition-all duration-300 ease-linear"
                 >
                   Sign In
                 </button>
@@ -91,7 +97,7 @@ const HomeNav = () => {
             </div>
           </div>
           <ul className="hidden pb-2 md:flex justify-center items-center">
-            <Link href="/home" passHref>
+            <Link href="/" passHref>
               <span className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
                 Home
               </span>
@@ -115,18 +121,24 @@ const HomeNav = () => {
         </div>
         {/* mobile view */}
         <div className="md:hidden flex justify-between items-center border-b border-solid border-white px-2">
-          <div className="grid grid-cols-[50px_50px_50px] justify-start flex-1">
+          <div className="grid grid-cols-[50px_50px_50px] justify-start">
             <Link href="/search" passHref>
               <Search
                 size={20}
                 className="text-white hover:text-gold-100 w-8 transition-all duration-300 ease-linear cursor-pointer"
               />
             </Link>
-            <Link href="/products" passHref>
-              <ShoppingCart
-                size={20}
-                className="text-white hover:text-gold-100  transition-all duration-300 ease-linear cursor-pointer"
-              />
+            <Link href="/cart" passHref>
+              <div className="relative">
+                <div className="w-5 h-5 rounded-full bg-red-600 text-white text-sm absolute top-2 left-4 grid place-items-center cursor-pointer">
+                  {render ? totalUniqueItems : ""}
+                </div>
+
+                <ShoppingCart
+                  size={20}
+                  className="text-white hover:text-gold-300  transition-all duration-300 ease-linear cursor-pointer"
+                />
+              </div>
             </Link>
             {loggedUser && (
               <button
@@ -138,13 +150,13 @@ const HomeNav = () => {
             )}
           </div>
           <div className="text-center m-1 flex-1">
-            <h1 className="text-white text-8xl font-dancing">
+            <h1 className="text-white text-5xl font-dancing">
               <Link href="/"><span>Teezar</span></Link>
             </h1>
             <h6 className="text-white text-base font-dancing my-2">Fashion</h6>
           </div>
           <div className="flex flex-1 justify-end mx-2">
-            {loggedUser ? (
+            {!loggedUser ? (
               <button
                 type="button"
                 onClick={handleSignin}
@@ -157,7 +169,7 @@ const HomeNav = () => {
                 <img
                   src={loggedUser?.photoURL}
                   alt="user"
-                  className="w-11 h-11 rounded-full justify-self-end"
+                  className="w-8 h-8 mt-6 rounded-full justify-self-end"
                   referrerPolicy="no-referrer"
                 />
               </div>

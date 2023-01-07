@@ -1,12 +1,21 @@
 import Image, { StaticImageData } from "next/image";
-import React, { Component } from "react";
+import React, { FC } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
-import items from "./carouselData";
+// import items from "./carouselData";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { urlFor } from "../../lib/sanityConfig";
 
-export default function CenterMode() {
+type Data = any;
+interface Item {
+  name: string;
+  image: any;
+}
+
+const CenterMode: FC<Data> = ({ data }: Data) => {
+  // console.log(data);
+
   var settings = {
     dots: true,
     className: "center",
@@ -29,28 +38,39 @@ export default function CenterMode() {
     ],
   };
 
-  type Item = {
-    name: string | React.Key
-    img: StaticImageData
-  }
-
   return (
     <div className="overflow-hidden my-4 border shadow-lg">
       <Slider {...settings} className="my-8 p-2">
-        {items.map((item: Item) => {
+        {data.map((item: Item) => {
+          const src = urlFor(item.image).url();
           return (
-            <div key={item.name} className="bg-white p-2 mx-5 shadow-inner w-3/5 md:w-full">
-              <Image src={item.img} alt="sample" className="mx-auto" />
+            <div key={item.name}>
+            <div
+              
+              className="bg-[#f2f2f2] p-2 mx-5 shadow-inner h-[45vh] md:h-[70vh] w-[90%] md:w-full relative"
+            >
+              <Image loader={()=>src}
+                src={src} unoptimized
+                layout="fill"
+                objectFit="contain"
+                alt="sample"
+                className="mx-auto relative "
+              />
+              </div>
               <p className="text-center text-base md:text-xl font-roboto mt-2">
                 {item.name}
               </p>
+            
             </div>
+            
           );
         })}
       </Slider>
     </div>
   );
-}
+};
+
+export default CenterMode;
 
 const Img = styled.img`
   width: 100%;
@@ -58,5 +78,3 @@ const Img = styled.img`
     width: 100%;
   }
 `;
-
-
