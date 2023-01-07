@@ -1,8 +1,10 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image'
 import React, { ReactElement, useEffect, useState } from 'react'
 import Applayout from '../../components/Applayout';
 import { client, urlFor } from '../../lib/sanityConfig';
+// @ts-ignore  
 import { useCart } from "react-use-cart";
 import { ShoppingCart } from "react-feather";
 import { GetStaticProps, InferGetStaticPropsType } from "next";

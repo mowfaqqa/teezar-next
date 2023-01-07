@@ -25,11 +25,11 @@ const Navbar2 = () => {
 
   return (
     <div>
-      <div className="bg-head-pattern h-fit w-full shadow-lg">
+      <div className="bg-head-pattern h-fit w-full shadow-lg overflow-hidden">
         <div className="hidden md:block bg-transparent border-b border-solid px-6 top-0 z-10 hover:bg-black ">
           <div className="bg-transparent pb-2 mb-3 flex justify-between items-center">
-            <div className="grid grid-cols-[80px_80px_80px] w-1/3 justify-start flex-1">
-              <div className="text-white grid gap-3">
+            <div className="grid md: grid-cols-2 md:grid-cols-3 w-1/3 justify-start flex-1">
+              <div className="text-white grid">
                 <Search
                   size={25}
                   className="text-white hover:text-gold-100 w-8 transition-all duration-300 ease-linear cursor-pointer"
@@ -48,22 +48,22 @@ const Navbar2 = () => {
                 </div>
               )}
             </div>
-            <div className="flex-1">
+            <div className=" flex-auto md:flex-1">
               <div className="text-center m-1">
-                <h1 className="text-white text-8xl font-dancing hover:text-gold-100 transition-all duration-300 ease-linear">
+                <h1 className="text-white text-base md:text-8xl font-dancing hover:text-gold-100 transition-all duration-300 ease-linear">
                   <Link href="/">Teezar</Link>
                 </h1>
-                <h6 className="text-white text-xl font-dancing my-2">
+                <h6 className="text-white text-sm font-dancing my-2">
                   Fashion
                 </h6>
               </div>
             </div>
-            <div className=" flex justify-end mx-2 flex-1">
+            <div className="md:flex justify-end mx-2 flex-1">
               {!loggedUser ? (
                 <button
                   type="button"
                   onClick={handleSignin}
-                  className="text-white border-2 rounded font-medium px-10 py-1 tracking-widest mx-3  hover:text-gold-100  hover:border-gold-100 transition-all duration-300 ease-linear"
+                  className="hidden md:block text-white border-2 rounded font-medium px-10 py-1 tracking-widest mx-3  hover:text-gold-100  hover:border-gold-100 transition-all duration-300 ease-linear"
                 >
                   Sign In
                 </button>
@@ -76,14 +76,14 @@ const Navbar2 = () => {
                     referrerPolicy="no-referrer"
                   />
                   <div className="text-white font-medium tracking-wide text-xl mb-3">
-                    Welcome, {loggedUser?.displayName}
+                  {loggedUser?.displayName}
                   </div>
                 </div>
               )}
             </div>
           </div>
           <ul className="hidden pb-2 md:flex justify-center items-center">
-            <Link href="/home" passHref>
+            <Link href="/" passHref>
               <a className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
                 Home
               </a>
@@ -107,7 +107,7 @@ const Navbar2 = () => {
         </div>
         {/* mobile view */}
         <div className="md:hidden flex justify-between items-center border-b border-solid border-white px-2">
-          <div className="grid grid-cols-[50px_50px_50px] justify-start flex-1">
+          <div className="grid grid-cols-[50px_50px] justify-start flex-1">
             <div>
               <Search
                 size={20}
@@ -134,7 +134,7 @@ const Navbar2 = () => {
               <button
                 type="button"
                 onClick={handleSignin}
-                className="text-white border-2 rounded font-medium px-7 text-sm py-1 tracking-widest mx-3  hover:text-gold-100  hover:border-gold-100 transition-all duration-300 ease-linear"
+                className="hidden text-white border-2 rounded font-medium px-7 text-sm py-1 tracking-widest mx-3  hover:text-gold-100  hover:border-gold-100 transition-all duration-300 ease-linear"
               >
                 Sign In
               </button>
@@ -143,12 +143,11 @@ const Navbar2 = () => {
                 <img
                   src={loggedUser?.photoURL}
                   alt="user"
-                  className="w-11 h-11 rounded-full justify-self-end"
+                  className="w-8 mt-6 h-8 rounded-full justify-self-end"
                   referrerPolicy="no-referrer"
                 />
               </div>
             )}
-
             <Hamburger />
           </div>
         </div>

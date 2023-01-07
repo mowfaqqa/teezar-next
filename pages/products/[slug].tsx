@@ -3,6 +3,7 @@ import Applayout from "../../components/Applayout";
 import Head from "next/head";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { client, urlFor } from "../../lib/sanityConfig";
+// @ts-ignore  
 import { useCart } from "react-use-cart";
 import { ShoppingCart } from "react-feather";
 import Link from "next/link";
@@ -65,7 +66,7 @@ const Product = ({ data }: Data) => {
   const { addItem, items, removeItem, updateItemQuantity, totalUniqueItems } =
     useCart();
   //get same item as data
-  const [item] = items.filter((item) => item.id == data.id);
+  const [item] = items.filter((item : any) => item.id == data.id);
   // console.log(item);
 
   return (
@@ -94,7 +95,7 @@ const Product = ({ data }: Data) => {
           <img
             src={urlFor(data.image).url()}
             alt="product"
-            className="w-5/6 mx-auto"
+            className="w-4/6 mx-auto"
           />
         </div>
         <div>

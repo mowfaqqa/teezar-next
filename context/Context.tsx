@@ -6,7 +6,6 @@ import React, {
   useState,
 } from "react";
 import { auth, onAuthStateChanged } from "../lib/firebase";
-import { CartProvider } from "react-use-cart";
 
 type Children = {
   children: ReactNode;
@@ -29,7 +28,7 @@ export function Context({ children }: Children) {
       } catch (error) {}
     }
 
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, (user : any) => {
       // store the user in localstorage
       if (user) {
         localStorage.setItem("authUser", JSON.stringify(user));

@@ -1,6 +1,7 @@
 import React, { ReactElement, useEffect, useState } from "react";
 import Applayout from "../components/Applayout";
 import Head from "next/head";
+// @ts-ignore  
 import { useCart } from "react-use-cart";
 import { urlFor } from "../lib/sanityConfig";
 import Link from "next/link";
@@ -35,12 +36,11 @@ const Cart = () => {
             Cart ({totalUniqueItems})
           </h1>
           <ul>
-            {items.map((item) => (
-              <li
+            {items.map((item : any) => (
+              <div
                 key={item.id}
-                className="w-[98%] mx-auto shadow-md mb-4 p-1 md:p-3 rounded-xl bg-white grid grid-cols-2 justify-center  "
+                className="mx-auto shadow-md mb-4 p-1 md:p-3 rounded-xl bg-white grid grid-cols-2 md:grid-cols-4 justify-center items-center px-2"
               >
-                <div className="ml-2 md:ml-10 flex justify-start gap-9 mb-2">
                   <Link href={`/products/${item.slug.current}`}>
                     <img
                       src={urlFor(item.image).url()}
@@ -68,15 +68,17 @@ const Cart = () => {
                       </span>
                     </p>
                   </div>
-                </div>
-                <div className="justify-self-end self-center mr-2 md:mr-10 text-sm font-bold grid place-items-center">
+                  <div></div>
+                <div className="w-full flex justify-end items-center px-5  md:mr-10 text-sm font-bold ">
+                  <div className="py-3">
                   <p>N{item.price * (item?.quantity as number)}</p>
                   <button
                     className="border mt-2 text-sm px-2 py-1 border-gold-100 bg-gold-100 text-white font-semibold rounded transition-all duration-300 shadow-md w-full hover:scale-105"
                     onClick={() => removeItem(item.id)}
-                  >
+                    >
                     Remove Item
                   </button>
+                    </div>
                 </div>
 
                 {/* <button
@@ -94,7 +96,7 @@ const Cart = () => {
               +
             </button> */}
                 {/* <button onClick={() => removeItem(item.id)}>&times;</button> */}
-              </li>
+              </div>
             ))}
           </ul>
           <p className="font-semibold text-xl text-right mr-10">
