@@ -155,12 +155,12 @@ const HomeNav = () => {
             </h1>
             <h6 className="text-white text-base font-dancing my-2">Fashion</h6>
           </div>
-          <div className="mx-2 px-2">
+          <div className="mx-4">
             {!loggedUser ? (
               <button
                 type="button"
                 onClick={handleSignin}
-                className="mt-8 text-white border rounded font-medium px-7 w-[150px] md:text-sm text-xs mx-3 font-nunito py-1 tracking-widest hover:text-gold-100  hover:border-gold-100 transition-all duration-300 ease-linear"
+                className="mt-8 text-white border rounded font-medium px-3 w-[100px] md:text-sm text-xs mr-4 font-nunito py-1 tracking-widest hover:text-gold-100  hover:border-gold-100 transition-all duration-300 ease-linear"
               >
                 Sign In
               </button>
