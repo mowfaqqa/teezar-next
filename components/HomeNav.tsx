@@ -120,8 +120,8 @@ const HomeNav = () => {
           </ul>
         </div>
         {/* mobile view */}
-        <div className="md:hidden flex justify-between items-center border-b border-solid border-white px-2">
-          <div className="grid grid-cols-[50px_50px_50px] justify-start">
+        <div className="md:hidden grid grid-cols-3 justify-between items-center border-b border-solid border-white px-2">
+          <div className="grid grid-cols-3 justify-start">
             <Link href="/search" passHref>
               <Search
                 size={20}
