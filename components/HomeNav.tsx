@@ -149,18 +149,18 @@ const HomeNav = () => {
               </button>
             )}
           </div>
-          <div className="text-center m-1 flex-1">
-            <h1 className="text-white text-5xl font-dancing">
+          <div className="text-center flex-1">
+            <h1 className="text-white text-4xl font-dancing">
               <Link href="/"><span>Teezar</span></Link>
             </h1>
             <h6 className="text-white text-base font-dancing my-2">Fashion</h6>
           </div>
-          <div className="flex flex-1 justify-end mx-2">
+          <div className="mx-2 px-2">
             {!loggedUser ? (
               <button
                 type="button"
                 onClick={handleSignin}
-                className="mt-6 text-white border rounded font-medium px-10 md:px-7 md:text-sm text-xs font-nunito py-1 tracking-widest hover:text-gold-100  hover:border-gold-100 transition-all duration-300 ease-linear"
+                className="mt-8 text-white border rounded font-medium px-10 md:px-7 md:text-sm text-xs mx-2 font-nunito py-1 tracking-widest hover:text-gold-100  hover:border-gold-100 transition-all duration-300 ease-linear"
               >
                 Sign In
               </button>
