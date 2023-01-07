@@ -160,7 +160,7 @@ const HomeNav = () => {
               <button
                 type="button"
                 onClick={handleSignin}
-                className="text-white border-2 rounded font-medium px-7 text-sm font-nunito py-1 tracking-widest mx-3  hover:text-gold-100  hover:border-gold-100 transition-all duration-300 ease-linear"
+                className="hidden text-white border-2 rounded font-medium px-7 text-sm font-nunito py-1 tracking-widest mx-3  hover:text-gold-100  hover:border-gold-100 transition-all duration-300 ease-linear"
               >
                 Sign In
               </button>
