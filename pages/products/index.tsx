@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Link from 'next/link';
+import Image from 'next/image'
 import React, { ReactElement } from 'react'
 import Applayout from '../../components/Applayout';
 import productData from '../../components/productData';
@@ -18,7 +19,7 @@ const Products = () => {
                 <Link href={`/products/${item.id}`} passHref>
                   <div>
 
-                  <img src={item.img} alt="product" className="w-full mx-auto rounded-md h-5/6 object-cover"/>
+                  <Image src={item.img} alt="product" width={300} height={400}/>
                   <div className="ml-3 leading-3">
                       <p className='capitalize text-lg'>{item.product_name}</p>
                       <p className='font-black'>{item.price}</p>

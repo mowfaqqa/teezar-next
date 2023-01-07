@@ -92,24 +92,24 @@ const HomeNav = () => {
           </div>
           <ul className="hidden pb-2 md:flex justify-center items-center">
             <Link href="/home" passHref>
-              <a className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
+              <span className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
                 Home
-              </a>
+              </span>
             </Link>
             <Link href="/shop" passHref>
-              <a className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
+              <span className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
                 Shop
-              </a>
+              </span>
             </Link>
             <Link href="/accessories" passHref>
-              <a className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
+              <span className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
                 Accessories
-              </a>
+              </span>
             </Link>
             <Link href="/collections" passHref>
-              <a className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
+              <span className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
                 Collections
-              </a>
+              </span>
             </Link>
           </ul>
         </div>
@@ -139,7 +139,7 @@ const HomeNav = () => {
           </div>
           <div className="text-center m-1 flex-1">
             <h1 className="text-white text-8xl font-dancing">
-              <Link href="/">Teezar</Link>
+              <Link href="/"><span>Teezar</span></Link>
             </h1>
             <h6 className="text-white text-base font-dancing my-2">Fashion</h6>
           </div>

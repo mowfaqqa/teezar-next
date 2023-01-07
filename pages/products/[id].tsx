@@ -2,6 +2,8 @@ import React, { ReactElement } from 'react'
 import Applayout from '../../components/Applayout';
 import productData from '../../components/productData';
 import Head from 'next/head';
+import Image from 'next/image'
+
 
    
 export const getStaticPaths = ()=>{
@@ -48,8 +50,8 @@ const Product = ({product}:Prod) => {
       <title>Teezar_Fashion | Products</title>
     </Head>
     <div className="grid grid-cols-1 md:grid-cols-3  p-4">
-       <div className="col-span-2">
-          <img src={product.img} alt="product" className="w-5/6 mx-auto"/>
+       <div className="col-span-2 mx-auto">
+          <Image src={product.img} alt="product" height={800} width={600}/>
        </div>
        <div className="col-span-1 md:border-l md:border-solid md:border-gray-400 py-3">
           <h2 className="text-3xl md:text-5xl font-serif text-center text-gold-200">{product.product_name}</h2>
