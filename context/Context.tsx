@@ -29,7 +29,7 @@ export function Context({ children }: Children) {
       } catch (error) {}
     }
 
-    onAuthStateChanged(auth, (user) => {
+    onAuthStateChanged(auth, (user : any) => {
       // store the user in localstorage
       if (user) {
         localStorage.setItem("authUser", JSON.stringify(user));

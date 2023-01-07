@@ -36,7 +36,7 @@ const HomeNav = () => {
                 />
                 Search
               </div>
-              <Search>
+              <Search />
               <Link href="/cart" passHref>
                 <div className="relative">
                   <div className="w-5 h-5  rounded-full bg-red-600 text-white text-sm absolute bottom-7 right-11 grid place-items-center cursor-pointer ">
