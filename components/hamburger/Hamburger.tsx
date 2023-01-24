@@ -12,7 +12,7 @@ const Hamburger = () => {
     const handleSignin = async () => {
       await signInWithRedirect(auth, provider);
       console.log("signed in");
-      // console.log(loggedUser);
+      
     };
     const handleSignout = async () => {
       await signOut(auth);

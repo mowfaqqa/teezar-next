@@ -2,7 +2,6 @@ import Image, { StaticImageData } from "next/image";
 import React, { FC } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
-// import items from "./carouselData";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { urlFor } from "../../lib/sanityConfig";
@@ -14,7 +13,7 @@ interface Item {
 }
 
 const CenterMode: FC<Data> = ({ data }: Data) => {
-  // console.log(data);
+  
 
   var settings = {
     dots: true,
@@ -24,7 +23,7 @@ const CenterMode: FC<Data> = ({ data }: Data) => {
     speed: 2000,
     centerPadding: "60px",
     slidesToShow: 3,
-    // speed: 500,
+  
     cssEase: "linear",
     responsive: [
       {

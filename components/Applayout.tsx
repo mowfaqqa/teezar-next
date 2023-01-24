@@ -9,7 +9,7 @@ interface AppProps {
 }
 const Applayout = ({ children }: AppProps) => {
   return (
-    // <CartProvider>
+    
     <Context>
       <div>
         <Navbar2 />
@@ -17,7 +17,7 @@ const Applayout = ({ children }: AppProps) => {
         <Footer />
       </div>
     </Context>
-    // </CartProvider>
+    
   );
 };
 

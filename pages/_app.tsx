@@ -23,6 +23,6 @@ export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
       <Context>
         <Component {...pageProps} />
       </Context>
-    // </CartProvider>
+    </CartProvider>
   );
 }
