@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { LogOut, Search } from "react-feather";
+import { LogOut } from "react-feather";
 import { provider, auth, signInWithRedirect, signOut } from "../lib/firebase";
 import Hamburger from "./hamburger/Hamburger";
 import { useStateContext } from "../context/Context";
@@ -9,7 +9,7 @@ import { useStateContext } from "../context/Context";
 
 
 const Navbar2 = () => {
-  const { loggedUser } = useStateContext();
+  const { loggedUser, isLogged } = useStateContext();
   
   
 
@@ -26,16 +26,16 @@ const Navbar2 = () => {
   return (
     <div>
       <div className="bg-head-pattern h-fit w-full shadow-lg overflow-hidden">
-        <div className="hidden md:block bg-transparent border-b border-solid px-6 top-0 z-10 hover:bg-black ">
+        {isLogged && <div className="hidden md:block bg-transparent border-b border-solid px-6 top-0 z-10 hover:bg-black ">
           <div className="bg-transparent pb-2 mb-3 flex justify-between items-center">
             <div className="grid md: grid-cols-2 md:grid-cols-3 w-1/3 justify-start flex-1">
-              <div className="text-white grid">
+              {/* <div className="text-white grid">
                 <Search
                   size={25}
                   className="text-white hover:text-gold-100 w-8 transition-all duration-300 ease-linear cursor-pointer"
                 />
                 Search
-              </div>
+              </div> */}
               {loggedUser && (
                 <div className="text-white grid gap-3">
                   <button
@@ -90,7 +90,7 @@ const Navbar2 = () => {
             </Link>
             <Link href="/products" passHref>
               <a className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
-                Shop
+                Bookings
               </a>
             </Link>
             <Link href="/accessories" passHref>
@@ -98,22 +98,12 @@ const Navbar2 = () => {
                 Accessories
               </a>
             </Link>
-            <Link href="/collections" passHref>
-              <a className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
-                Collections
-              </a>
-            </Link>
           </ul>
-        </div>
+        </div>}
         {/* mobile view */}
-        <div className="md:hidden flex justify-between items-center border-b border-solid border-white px-2">
+        {isLogged && <div className="md:hidden flex justify-between items-center border-b border-solid border-white px-2">
           <div className="grid grid-cols-[50px_50px] justify-start flex-1">
-            <div>
-              <Search
-                size={20}
-                className="text-white hover:text-gold-300 w-8 transition-all duration-300 ease-linear cursor-pointer"
-              />
-            </div>
+            
             {loggedUser && (
               <button
                 onClick={handleSignout}
@@ -150,7 +140,7 @@ const Navbar2 = () => {
             )}
             <Hamburger />
           </div>
-        </div>
+        </div>}
       </div>
     </div>
   );

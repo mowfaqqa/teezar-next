@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { LogOut, Search, ShoppingCart } from "react-feather";
+import { LogOut, ShoppingCart } from "react-feather";
 import { provider, auth, signInWithRedirect, signOut } from "../lib/firebase";
 import Hamburger from "./hamburger/Hamburger";
 import { useStateContext } from "../context/Context";
@@ -8,7 +8,7 @@ import { useStateContext } from "../context/Context";
 import { useCart } from "react-use-cart";
 
 const HomeNav = () => {
-  const { loggedUser } = useStateContext();
+  const { loggedUser, isLogged } = useStateContext();
   const [render, setRender] = useState(false);
   const { totalUniqueItems } = useCart();
   useEffect(() => {
@@ -26,16 +26,16 @@ const HomeNav = () => {
   return (
     <div>
       <div className="h-fit w-full overflow-hidden">
-        <div className="hidden md:block bg-transparent border-b border-solid border-white px-6 top-0 z-10 hover:bg-black ">
+        {isLogged && <div className="hidden md:block bg-transparent border-b border-solid border-white px-6 top-0 z-10 hover:bg-black ">
           <div className="bg-transparent pb-2 mb-3 flex justify-between items-center">
             <div className="grid grid-cols-[80px_80px_80px] w-1/3 justify-start flex-1">
-              <div className="text-white grid gap-3">
+              {/* <div className="text-white grid gap-3">
                 <Search
                   size={25}
                   className="text-white hover:text-gold-100 w-8 transition-all duration-300 ease-linear cursor-pointer"
                 />
                 Search
-              </div>
+              </div> */}
               <Link href="/cart" passHref>
                 <div className="relative">
                   <div className="w-5 h-5 rounded-full bg-red-600 text-white text-sm absolute bottom-7 right-11 grid place-items-center cursor-pointer ">
@@ -98,36 +98,32 @@ const HomeNav = () => {
           </div>
           <ul className="hidden pb-2 md:flex justify-center items-center">
             <Link href="/" passHref>
-              <span className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
+              <span className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear hover:cursor-pointer">
                 Home
               </span>
             </Link>
             <Link href="/shop" passHref>
-              <span className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
-                Shop
+              <span className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear hover:cursor-pointer">
+                Bookings
               </span>
             </Link>
             <Link href="/accessories" passHref>
-              <span className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
+              <span className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear hover:cursor-pointer">
                 Accessories
               </span>
             </Link>
-            <Link href="/collections" passHref>
-              <span className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
-                Collections
-              </span>
-            </Link>
           </ul>
-        </div>
+        </div>}
+
         {/* mobile view */}
-        <div className="md:hidden grid grid-cols-3 justify-between items-center border-b border-solid border-white px-2">
-          <div className="grid grid-cols-3 justify-start">
-            <Link href="/search" passHref>
+        { isLogged && <div className="md:hidden grid grid-cols-3 justify-between items-center border-b border-solid border-white px-2">
+          <div className="ml-5 grid grid-cols-3 justify-start">
+            {/* <Link href="/search" passHref>
               <Search
                 size={20}
                 className="text-white hover:text-gold-100 w-8 transition-all duration-300 ease-linear cursor-pointer"
               />
-            </Link>
+            </Link> */}
             <Link href="/cart" passHref>
               <div className="relative">
                 <div className="w-5 h-5 rounded-full bg-red-600 text-white text-sm absolute top-2 left-4 grid place-items-center cursor-pointer">
@@ -155,7 +151,7 @@ const HomeNav = () => {
             </h1>
             <h6 className="text-white text-base font-dancing my-2">Fashion</h6>
           </div>
-          <div className="mx-4">
+          <div className="ml-14">
             {!loggedUser ? (
               <button
                 type="button"
@@ -177,7 +173,7 @@ const HomeNav = () => {
 
             <Hamburger />
           </div>
-        </div>
+        </div>}
       </div>
     </div>
   );

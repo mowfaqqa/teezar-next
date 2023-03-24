@@ -56,10 +56,6 @@ const CenterMode: FC<Data> = ({ data }: Data) => {
                 className="mx-auto relative "
               />
               </div>
-              <p className="text-center text-base md:text-xl font-roboto mt-2">
-                {item.name}
-              </p>
-            
             </div>
             
           );
