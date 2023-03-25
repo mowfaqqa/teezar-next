@@ -59,21 +59,21 @@ const Products = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
         </Link>
       </div>
       <h2 className="font-dancing text-5xl text-gold-100 font-bold text-center my-7">Nails By Teezar</h2>
-      <div className="grid grid-cols-2 md:grid-cols-4 my-2 text-gold-100 font-semibold">
+      <div className="grid grid-cols-2 md:grid-cols-5 my-2 text-gold-100 font-semibold">
         {data.map((item: Item) => {
           const src = urlFor(item.image).url();
           return (
-            <div className="m-2 cursor-pointer" key={item.name}>
+            <div className="mx-4 my-7 cursor-pointer" key={item.name}>
               <Link href={`/products/${item.slug.current}`} passHref>
                 <div>
                   <img
                     src={src}
                     alt="product"
-                    className="w-full mx-auto rounded-md h-5/6 object-cover"
+                    className=" mx-auto rounded-md object-cover"
                   />
                   <div className="ml-3 leading-3">
                     <p className="capitalize text-lg">{item.name}</p>
-                    <p className="font-black">{item.price}</p>
+                    <p className="font-black">&#8358;{item.price}</p>
                   </div>
                 </div>
               </Link>

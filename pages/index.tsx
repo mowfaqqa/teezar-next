@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import CenterMode from "../components/carousel/Carousel";
 import Category from "../components/Category/Category";
 import Gallery from "../components/Gallery/Gallery";
@@ -10,10 +10,9 @@ import { Context } from "../context/Context";
 import { client } from "../lib/sanityConfig";
 import { GetStaticProps, InferGetStaticPropsType } from "next";
 import { Calendar } from "react-feather";
-
-// interface Data{
-
-// }
+import { useStateContext } from "../context/Context";
+import { useRouter } from "next/router";
+import Modal from "../components/Modal";
 
 export const getStaticProps: GetStaticProps = async () => {
   const carouselQuery = '*[ _type == "carousel"]';
@@ -28,17 +27,27 @@ export const getStaticProps: GetStaticProps = async () => {
 };
 
 const Home: FC = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
-  // console.log('carousel', data);
+  const { loggedUser } = useStateContext();
+  const [show, setShow] = useState(false)
+  const router = useRouter();
 
-  const handleClick = ()=>{
-    
-  }
+
+
+  const handleClick = () => {
+    if (loggedUser) {
+      router.push("/book");
+    } else {
+      setShow(!show);
+      console.log(show);
+    }
+  };
 
   return (
     <Context>
       <Head>
         <title>Teezar_Fashion | NG</title>
       </Head>
+      {show && <Modal func={handleClick} data="Book your Appointment" />}
       <div className="bg-home h-screen bg-cover shadow-lg">
         <HomeNav />
       </div>
@@ -62,10 +71,15 @@ const Home: FC = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
               By appointments only
             </span>
           </p>
-          <button onClick={handleClick} className="flex mx-auto mt-4 gap-2 bg-gold-100 hover:bg-gold-300 transition-all duration-300 py-2 px-8 text-white font-semibold rounded shadow-md "><p>Book an Appointment</p> <Calendar size={20}/></button>
+          <button
+            onClick={handleClick}
+            className="flex mx-auto mt-4 gap-2 bg-gold-100 hover:bg-gold-300 transition-all duration-300 py-2 px-8 text-white font-semibold rounded shadow-md focus:outline-none"
+          >
+            <p>Book an Appointment</p> <Calendar size={20} />
+          </button>
         </div>
       </div>
-      <Category />
+      <Category func={handleClick}/>
       <div className="text-center my-8">
         <Link href="/products">
           <a className="bg-gold-100 hover:bg-gold-300 transition-all duration-300 py-2 px-8 text-white font-semibold rounded shadow-md">

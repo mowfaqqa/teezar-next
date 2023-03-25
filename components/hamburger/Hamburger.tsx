@@ -8,10 +8,19 @@ import {
   signInWithRedirect,
   signOut,
 } from "../../lib/firebase";
+import { useRouter } from "next/router";
 
 const Hamburger = () => {
   const { loggedUser } = useStateContext();
+  const router = useRouter();
 
+  const handleClick = () => {
+    if (loggedUser) {
+      router.push("/book");
+    } else {
+      alert('Please sign in for bookings')
+    }
+  };
   const handleSignin = async () => {
     await signInWithRedirect(auth, provider);
     console.log("signed in");
@@ -41,9 +50,9 @@ const Hamburger = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/bookings" passHref>
+                <div className="text-white hover:cursor-pointer hover:text-gold-300" onClick={handleClick}>
                   Bookings
-                </Link>
+                </div>
               </li>
               {loggedUser && (
                 <li>

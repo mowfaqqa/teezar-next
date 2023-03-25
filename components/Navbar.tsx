@@ -3,15 +3,23 @@ import { LogOut } from "react-feather";
 import { provider, auth, signInWithRedirect, signOut } from "../lib/firebase";
 import Hamburger from "./hamburger/Hamburger";
 import { useStateContext } from "../context/Context";
-
+import { useRouter } from "next/router";
 
 
 
 
 const Navbar2 = () => {
   const { loggedUser, isLogged } = useStateContext();
+  const router = useRouter();
+
   
-  
+  const handleClick = () => {
+    if (loggedUser) {
+      router.push("/book");
+    } else {
+      alert('Please sign in for bookings')
+    }
+  };
 
   const handleSignin = async () => {
     await signInWithRedirect(auth, provider);
@@ -88,21 +96,22 @@ const Navbar2 = () => {
                 Home
               </a>
             </Link>
-            <Link href="/products" passHref>
-              <a className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
+            <div onClick={handleClick}>
+              <a className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear hover:cursor-pointer">
                 Bookings
               </a>
-            </Link>
-            <Link href="/accessories" passHref>
+            </div>
+            <Link href="/products" passHref>
               <a className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
                 Accessories
               </a>
             </Link>
           </ul>
         </div>}
+
         {/* mobile view */}
         {isLogged && <div className="md:hidden flex justify-between items-center border-b border-solid border-white px-2">
-          <div className="grid grid-cols-[50px_50px] justify-start flex-1">
+          <div className="grid grid-cols-[50px_50px] justify-start flex-1 ml-5">
             
             {loggedUser && (
               <button
@@ -114,7 +123,7 @@ const Navbar2 = () => {
             )}
           </div>
           <div className="text-center m-1">
-            <h1 className="text-white text-7xl font-dancing">
+            <h1 className="text-white text-6xl font-dancing">
               <Link href="/">Teezar</Link>
             </h1>
             <h6 className="text-white text-sm font-dancing my-2">Fashion</h6>
@@ -124,7 +133,7 @@ const Navbar2 = () => {
               <button
                 type="button"
                 onClick={handleSignin}
-                className="hidden text-white border-2 rounded font-medium px-7 text-sm py-1 tracking-widest mx-3  hover:text-gold-100  hover:border-gold-100 transition-all duration-300 ease-linear"
+                className=" text-white border-2 rounded font-medium px-7 text-sm py-1 tracking-widest mx-3  hover:text-gold-100  hover:border-gold-100 transition-all duration-300 ease-linear"
               >
                 Sign In
               </button>
