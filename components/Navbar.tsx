@@ -111,7 +111,7 @@ const Navbar2 = () => {
 
         {/* mobile view */}
         {isLogged && <div className="md:hidden flex justify-between items-center border-b border-solid border-white px-2">
-          <div className="justify-start flex-1 ml-2">
+          <div className="justify-start ml-2">
             
             {loggedUser && (
               <button
