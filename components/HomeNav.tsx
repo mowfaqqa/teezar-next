@@ -167,7 +167,7 @@ const HomeNav = () => {
                 Fashion
               </h6>
             </div>
-            <div className="ml-14">
+            <div className="ml-7">
               {!loggedUser ? (
                 <button
                   type="button"
