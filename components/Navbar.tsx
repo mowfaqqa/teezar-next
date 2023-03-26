@@ -111,7 +111,7 @@ const Navbar2 = () => {
 
         {/* mobile view */}
         {isLogged && <div className="md:hidden flex justify-between items-center border-b border-solid border-white px-2">
-          <div className="grid grid-cols-[50px_50px] justify-start flex-1 ml-5">
+          <div className="grid grid-cols-[50px_50px] justify-start flex-1 ml-2">
             
             {loggedUser && (
               <button
@@ -128,7 +128,7 @@ const Navbar2 = () => {
             </h1>
             <h6 className="text-white text-sm font-dancing my-2">Fashion</h6>
           </div>
-          <div className=" flex flex-1 justify-end mx-2">
+          <div className=" flex justify-end mx-2">
             {!loggedUser ? (
               <button
                 type="button"
