@@ -133,7 +133,7 @@ const Navbar2 = () => {
               <button
                 type="button"
                 onClick={handleSignin}
-                className=" text-white border-2 rounded font-medium px-7 text-sm py-1 tracking-widest mx-3  hover:text-gold-100  hover:border-gold-100 transition-all duration-300 ease-linear"
+                className=" text-white border-2 rounded font-medium px-3 text-sm py-1 tracking-widest mx-3  hover:text-gold-100  hover:border-gold-100 transition-all duration-300 ease-linear"
               >
                 Sign In
               </button>
