@@ -22,3 +22,7 @@ body{
  background-clip: text;
  -webkit-text-fill-color: transparent;
 }
+
+button:focus{
+  outline: none;
+}

@@ -13,12 +13,17 @@ type Children = {
 
 type StateContext = {
   loggedUser: any;
+  isLogged: boolean;
+  
 };
 
 const stateContext = createContext({} as StateContext);
 
 export function Context({ children }: Children) {
-  const [loggedUser, setloggedUser] = useState<any>(false);
+  const [loggedUser, setloggedUser] = useState<any>(null);
+  const [isLogged, setIsLogged] = useState<any>(false);
+  
+
 
   useEffect(() => {
     const ISSERVER = typeof window === "undefined";
@@ -28,24 +33,26 @@ export function Context({ children }: Children) {
       } catch (error) {}
     }
 
-    onAuthStateChanged(auth, (user : any) => {
+    onAuthStateChanged(auth, (user: any) => {
       // store the user in localstorage
       if (user) {
         localStorage.setItem("authUser", JSON.stringify(user));
         setloggedUser(user);
+        setIsLogged(true);
       } else {
         localStorage.removeItem("authUser");
         setloggedUser(false);
+        setIsLogged(true);
       }
     });
   }, []);
 
   return (
-    
-      <stateContext.Provider value={{ loggedUser }}>
-        {children}
-      </stateContext.Provider>
-    
+    <stateContext.Provider
+      value={{ loggedUser, isLogged}}
+    >
+      {children}
+    </stateContext.Provider>
   );
 }
 

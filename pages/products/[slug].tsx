@@ -3,10 +3,12 @@ import Applayout from "../../components/Applayout";
 import Head from "next/head";
 import { GetStaticProps, GetStaticPaths } from "next";
 import { client, urlFor } from "../../lib/sanityConfig";
-// @ts-ignore  
+// @ts-ignore
 import { useCart } from "react-use-cart";
 import { ShoppingCart } from "react-feather";
 import Link from "next/link";
+import { useStateContext } from "../../context/Context";
+import Modal from "../../components/Modal";
 
 type Data = {
   data: Itemz;
@@ -50,12 +52,18 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
 };
 
 const Product = ({ data }: Data) => {
-  const [color, setColor] = useState("");
-  const [size, setSize] = useState("");
+  // const [color, setColor] = useState("");
+  // const [size, setSize] = useState("");
+  const [show, setShow] = useState(false);
+  const { loggedUser } = useStateContext();
 
   const handleSubmit = (e: any) => {
     e.preventDefault();
-    addItem({ ...data, color, size });
+    if (loggedUser) {
+      addItem({ ...data });
+    } else {
+      setShow(!show);
+    }
   };
 
   const [render, setRender] = useState(false);
@@ -66,7 +74,7 @@ const Product = ({ data }: Data) => {
   const { addItem, items, removeItem, updateItemQuantity, totalUniqueItems } =
     useCart();
   //get same item as data
-  const [item] = items.filter((item : any) => item.id == data.id);
+  const [item] = items.filter((item: any) => item.id == data.id);
   // console.log(item);
 
   return (
@@ -74,6 +82,7 @@ const Product = ({ data }: Data) => {
       <Head>
         <title>Teezar_Fashion | Products</title>
       </Head>
+      {show && <Modal func={handleSubmit} data="Proceed with your Purchase" />}
       <div className="fixed right-10 mt-10">
         <Link href="/cart" passHref>
           <div className="relative hover:scale-105 transition-all duration-100 ease-linear ">
@@ -100,16 +109,16 @@ const Product = ({ data }: Data) => {
         </div>
         <div>
           <form onSubmit={handleSubmit} className="col-span-1  py-3">
-            <h2 className="text-3xl md:text-5xl font-serif text-center text-gold-200">
+            <h2 className="text-3xl text-center uppercase md:mt-10 mt-3 font-bold text-gold-200">
               {data?.name}
             </h2>
-            <p className="text-gold-300 text-xl text-center mt-2">
-              {data.price}
+            <p className="text-gold-300 font-bold text-xl text-center mt-2">
+              &#8358;{data.price}
             </p>
             <p className="text-gray-600 text-base text-center m-2">
               {data.desc}
             </p>
-            <div className="text-center mt-6 pt-4 mx-3 border-t border-dotted border-gray-300">
+            {/* <div className="text-center mt-6 pt-4 mx-3 border-t border-dotted border-gray-300">
               <label htmlFor="color" className="text-xl">
                 Color :{" "}
               </label>
@@ -149,9 +158,9 @@ const Product = ({ data }: Data) => {
                 <option value="18">18</option>
                 <option value="20">20</option>
               </select>
-            </div>
-            <p className="text-center my-4 font-serif ">
-              Category : {data.category}
+            </div> */}
+            <p className="font-dancing text-4xl text-gold-100 font-bold text-center my-7 ">
+              {data.category}
             </p>
             <div className="mt-8 mx-auto grid grid-cols-1">
               <div className="text-center">

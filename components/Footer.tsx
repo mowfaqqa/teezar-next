@@ -5,7 +5,7 @@ import {
 } from "@heroicons/react/outline";
 import React from "react";
 import Link from "next/link";
-import { Facebook, Instagram, Twitter } from "react-feather";
+import { Facebook, Instagram, Twitter,  } from "react-feather";
 
 const Footer = () => {
   return (
@@ -13,86 +13,46 @@ const Footer = () => {
       <div className="bg-[#f2f2f2] border-b border-solid border-gray-300 p-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         <div className="mb-3 flex flex-col">
           <h5 className="font-dancing text-xl font-bold text-gold-100">Shop</h5>
-          <Link href="/bespoke" passHref>
+          <div >
             <span className="text-black">Bespoke</span>
-          </Link>
-          <Link href="/accessories" passHref>
+          </div>
+          <div>
             <span className="text-black font-roboto ">Accessories</span>
-          </Link>
-          <Link href="/luxury" passHref>
+          </div>
+          <div >
             <span className="text-black font-roboto">Luxury & Bridal</span>
-          </Link>
-          <Link href="/" passHref>
+          </div>
+          <div >
             <span className="text-black font-roboto">
               Turban Caps & Headbands
             </span>
-          </Link>
-          <Link href="/" passHref>
+          </div>
+          <div >
             <span className="text-black font-roboto">Ready To Wear</span>
-          </Link>
-          <Link href="/" passHref>
+          </div>
+          <div  >
             <span className="text-black font-roboto">Kaftan Dresses</span>
-          </Link>
-          <Link href="/" passHref>
+          </div>
+          <div >
             <span className="text-black font-roboto">Kiddies wears</span>
-          </Link>
+          </div>
         </div>
         <div className="mb-3 flex flex-col">
           <h6 className="font-dancing text-xl font-bold text-gold-100">
             Brands
           </h6>
-          <Link href="/" passHref>
-            <span className="text-black font-roboto">Elegante</span>
-          </Link>
-          <Link href="/" passHref>
-            <span className="text-black font-roboto">Teezar collection</span>
-          </Link>
-          <Link href="/" passHref>
-            <span className="text-black font-roboto">Lorem, ipsum.</span>
-          </Link>
-          <Link href="/" passHref>
-            <span className="text-black font-roboto">Lorem, ipsum.</span>
-          </Link>
+          <div>
+            <span className="text-black font-roboto">Nails By Teezar</span>
+          </div>
         </div>
         <div className="mb-3 flex flex-col">
-          <h6 className="font-dancing text-xl font-bold text-gold-100">
-            Help{" "}
-          </h6>
-          <Link href="/" passHref>
-            <span className="text-black font-roboto">Privacy Policy</span>
-          </Link>
-          <Link href="/" passHref>
-            <span className="text-black font-roboto">Terms and Conditions</span>
-          </Link>
-          <Link href="/" passHref>
-            <span className="text-black font-roboto">Contact Us</span>
-          </Link>
-          <Link href="/" passHref>
-            <span className="text-black font-roboto">FAQs</span>
-          </Link>
-        </div>
-        <div className="mb-3 flex flex-col">
-          <h6 className="font-dancing text-xl font-bold text-gold-100">
-            Teezar
-          </h6>
-          <Link href="/" passHref>
-            <span className="text-black font-roboto">About Us</span>
-          </Link>
-          <Link href="/" passHref>
-            <span className="text-black font-roboto">Blog</span>
-          </Link>
-          <Link href="/" passHref>
-            <span className="text-black font-roboto">Gallery</span>
-          </Link>
-        </div>
-        <div className="mb-3 flex flex-col">
-          <h6 className="font-dancing text-xl font-bold text-gold-100">
+          <h6 className="font-dancing text-xl font-bold text-gold-100" id="contact">
             Contact Information
           </h6>
-          <span className="flex items-center">
+          <a href="https://api.whatsapp.com/send?phone=8166508998&text=Hello%20Teezar,%20I%27d%20like%20to%20make%20an%20enquiry..." target="_blank" className="flex items-center hover:text-gold-100">
             <PhoneIcon width={20} height={20} className=" text-gold-100" />{" "}
-            <p>: 07042829999</p>
-          </span>
+            <p>: 08166508998</p>
+          </a>
           <span className="flex items-center">
             <LocationMarkerIcon
               width={20}
@@ -103,20 +63,26 @@ const Footer = () => {
           </span>
           <span className="flex items-center">
             <MailIcon width={20} height={20} className=" text-gold-100" />{" "}
-            <p>: teezarfashion@gmail.com</p>
+            <p>: bintayusuf55@gmail.com</p>
           </span>
           <div className="flex mt-2">
-          <Facebook
-            size={20}
-            fill="white"
-            className=" hover:text-gold-100 m-2 hover:fill-gold-100"
-          />
-          <Instagram size={20} className=" hover:text-gold-100 m-2 " />
-          <Twitter
-            size={20}
-            fill="white"
-            className=" hover:text-gold-100 hover:fill-gold-100 m-2"
-          />
+          <a href=" https://m.facebook.com/100059616439281/"  target="_blank">
+            <Facebook
+              size={20}
+              fill="white"
+              className=" hover:text-gold-100 m-2 hover:fill-gold-100 hover:cursor-pointer"
+            />
+          </a>
+          <a href="https://www.instagram.com/teezar_fashion/?hl=en" target="_blank">
+            <Instagram size={20} className=" hover:text-gold-100 m-2  hover:cursor-pointer" />
+          </a>
+          <a href=" https://mobile.twitter.com/xarah_bint" target="_blank">
+            <Twitter
+              size={20}
+              fill="white"
+              className=" hover:text-gold-100 hover:fill-gold-100 m-2  hover:cursor-pointer"
+            />
+          </a>
         </div>
         </div>
         
