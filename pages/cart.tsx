@@ -48,7 +48,7 @@ const Cart = () => {
         <>
           {show && (
             <div className=" z-50 flex justify-center items-center w-[100%] h-[100%] fixed top-0 left-0 bg-black bg-opacity-70">
-              <div className="bg-white p-6 rounded font-bold flex flex-col items-center gap-7 w-[50%] ">
+              <div className="bg-white p-6 rounded font-bold flex flex-col items-center gap-7 w-[85%] md:w-[50%] ">
                 <div className="">
                   <div className="text-center">
                     <Tool className="mx-auto mb-1 text-gold-100" />{" "}
