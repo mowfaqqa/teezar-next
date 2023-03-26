@@ -128,7 +128,7 @@ const Navbar2 = () => {
             </h1>
             <h6 className="text-white text-sm font-dancing my-2">Fashion</h6>
           </div>
-          <div className=" flex justify-end mx-2">
+          <div className=" flex justify-end">
             {!loggedUser ? (
               <button
                 type="button"
