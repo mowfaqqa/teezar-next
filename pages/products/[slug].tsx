@@ -115,9 +115,9 @@ const Product = ({ data }: Data) => {
             <p className="text-gold-300 font-bold text-xl text-center mt-2">
               &#8358;{data.price}
             </p>
-            {/* <p className="text-gray-600 text-base text-center m-2">
+            <p className="text-gray-600 text-base text-center m-2">
               {data.desc}
-            </p> */}
+            </p>
             {/* <div className="text-center mt-6 pt-4 mx-3 border-t border-dotted border-gray-300">
               <label htmlFor="color" className="text-xl">
                 Color :{" "}
