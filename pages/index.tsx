@@ -58,11 +58,11 @@ const Home: FC = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
       </div>
       <CenterMode data={data} />
       <div className="w-[100%] h-fit py-10 md:py-16 bg-gradient-to-r from-gold-100 to-pink-800 bg-cover bg-center flex justify-center items-center">
-        <div className="w-[60%] p-7 bg-white text-center">
-          <h1 className="text-xl font-bold text-gold-100 mb-2 font-roboto">
+        <div className="w-[85%] md:w-[60%] p-7 bg-white text-center">
+          <h1 className=" text-xl font-bold text-gold-100 mb-2 font-roboto">
             LET'S MAKE YOU THAT DRESS!!!
           </h1>
-          <p className="text-lg">
+          <p className="md:text-lg">
             Trust{" "}
             <span className="font-dancing text-gold-100 text-xl">Teezar</span>{" "}
             when it comes to your dresses. We offer Custom Tailor made dresses
