@@ -128,8 +128,8 @@ const HomeNav = () => {
 
         {/* mobile view */}
         {isLogged && (
-          <div className="md:hidden grid grid-cols-3 justify-between items-center border-b border-solid border-white px-2">
-            <div className="ml-5 grid grid-cols-3 justify-start">
+          <div className="md:hidden grid grid-cols-3 justify-between items-center border-b border-solid border-white px-1">
+            <div className="ml-5 grid grid-cols-2 justify-start">
               {/* <Link href="/search" passHref>
               <Search
                 size={20}
@@ -167,7 +167,7 @@ const HomeNav = () => {
                 Fashion
               </h6>
             </div>
-            <div className="ml-7">
+            <div className="justify-self-end">
               {!loggedUser ? (
                 <button
                   type="button"
@@ -181,7 +181,7 @@ const HomeNav = () => {
                   <img
                     src={loggedUser?.photoURL}
                     alt="user"
-                    className="w-8 h-8 mt-6 rounded-full justify-self-end"
+                    className="w-8 h-8 mt-6 rounded-full"
                     referrerPolicy="no-referrer"
                   />
                 </div>
