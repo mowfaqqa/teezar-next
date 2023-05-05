@@ -22,7 +22,7 @@ const HomeNav = () => {
     if (loggedUser) {
       router.push("/book");
     } else {
-      alert('Please sign in for bookings')
+      alert("Please sign in for bookings");
     }
   };
   const handleSignin = async () => {
@@ -117,7 +117,7 @@ const HomeNav = () => {
                   Bookings
                 </span>
               </div>
-              <Link href="/products" passHref>
+              <Link href="/categories" passHref>
                 <span className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear hover:cursor-pointer">
                   Accessories
                 </span>
@@ -129,13 +129,13 @@ const HomeNav = () => {
         {/* mobile view */}
         {isLogged && (
           <div className="md:hidden grid grid-cols-3 justify-between items-center border-b border-solid border-white px-1">
-            <div className="ml-5 grid grid-cols-2 justify-start">
+            <div className="ml-5 flex gap-10 justify-start">
               {/* <Link href="/search" passHref>
               <Search
                 size={20}
                 className="text-white hover:text-gold-100 w-8 transition-all duration-300 ease-linear cursor-pointer"
               />
-            </Link> */}
+              </Link> */}
               <Link href="/cart" passHref>
                 <div className="relative">
                   <div className="w-5 h-5 rounded-full bg-red-600 text-white text-sm absolute top-2 left-4 grid place-items-center cursor-pointer">
@@ -167,7 +167,7 @@ const HomeNav = () => {
                 Fashion
               </h6>
             </div>
-            <div className="justify-self-end">
+            <div className="justify-self-end mr-5">
               {!loggedUser ? (
                 <button
                   type="button"

@@ -45,7 +45,7 @@ const Hamburger = () => {
                 </Link>
               </li>
               <li>
-                <Link href="/products" passHref>
+                <Link href="/categories" passHref>
                   Accessories 
                 </Link>
               </li>

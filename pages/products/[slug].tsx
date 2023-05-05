@@ -52,8 +52,7 @@ export const getStaticProps: GetStaticProps = async (context: any) => {
 };
 
 const Product = ({ data }: Data) => {
-  // const [color, setColor] = useState("");
-  // const [size, setSize] = useState("");
+  
   const [show, setShow] = useState(false);
   const { loggedUser } = useStateContext();
 
@@ -118,47 +117,6 @@ const Product = ({ data }: Data) => {
             <p className="text-gray-600 text-base text-center m-2">
               {data.desc}
             </p>
-            {/* <div className="text-center mt-6 pt-4 mx-3 border-t border-dotted border-gray-300">
-              <label htmlFor="color" className="text-xl">
-                Color :{" "}
-              </label>
-              <select
-                name="color"
-                required
-                id="color"
-                className="border-b border-solid border-gray-300 p-1 w-4/6 md:w-5/6 text-center text-xl text-gold-300"
-                value={color}
-                onChange={(e) => setColor(e.target.value)}
-              >
-                <option value="">select an option</option>
-                <option value="black">Black</option>
-                <option value="blue">Blue</option>
-                <option value="white">White</option>
-                <option value="red">red</option>
-              </select>{" "}
-              <br />
-              <label htmlFor="size" className="text-xl">
-                Size :{" "}
-              </label>
-              <select
-                name="size"
-                required
-                id="size"
-                className="border-b border-solid border-gray-300 p-1 w-4/6 md:w-5/6 text-center text-xl text-gold-300"
-                onChange={(e) => setSize(e.target.value)}
-              >
-                <option value="">select an option</option>
-                <option value="4">4</option>
-                <option value="6">6</option>
-                <option value="8">8</option>
-                <option value="10">10</option>
-                <option value="12">12</option>
-                <option value="14">14</option>
-                <option value="16">16</option>
-                <option value="18">18</option>
-                <option value="20">20</option>
-              </select>
-            </div> */}
             <p className="font-dancing text-4xl text-gold-100 font-bold text-center my-7 ">
               {data.category}
             </p>

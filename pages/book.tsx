@@ -15,12 +15,22 @@ export default function book({}: Props) {
         <title>Teezar_Fashion | Booking </title>
       </Head>
       <div className="h-[80vh] w-[100vw] flex justify-center items-center ">
-        <div className="w-[50%] h-[50%]">
+        <div className="w-[60%] h-[60%]">
           <div className="text-center">
-            <Tool className="mx-auto mb-1 text-gold-100"/> <span>
-              <span className="text-gold-100 font-bold">Hello {loggedUser?.displayName}</span>. Sorry our payment system is currently under maintenance.
-              Contact me on my socials to proceed with your booking. Thank you
-            </span>
+            <div className="grid gap-3">
+              <p className="text-gold-100 font-bold">
+                Hello {loggedUser?.displayName}.
+              </p>
+
+              <p>
+                Please make your transfer to the account number below and send proof of payment to any of my socials
+              </p>
+              <div>
+                <p className="text-xl text-gold-100 font-bold">0239941436 GTBank</p>
+                <p className="text-xl text-gold-100 font-bold">Hamman Ibrahim</p>
+              </div>
+              <p>Thank you</p>
+            </div>
           </div>
           <div className="flex mt-2 mx-auto justify-center">
             <a href=" https://m.facebook.com/100059616439281/" target="_blank">
@@ -47,7 +57,7 @@ export default function book({}: Props) {
               />
             </a>
             <a
-              href="https://api.whatsapp.com/send?phone=8166508998&text=Hello%20Teezar,%20I%27d%20like%20to%20make%20an%20enquiry..."
+              href="https://api.whatsapp.com/send?phone=8166508998&text=Hello%20Teezar,%20I%27d%20like%20to%20book%20an%20appointment"
               target="_blank"
             >
               <Phone

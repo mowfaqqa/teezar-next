@@ -101,7 +101,7 @@ const Navbar2 = () => {
                 Bookings
               </a>
             </div>
-            <Link href="/products" passHref>
+            <Link href="/categories" passHref>
               <a className="text-white text-base px-4 hover:text-gold-200 transition-all duration-300 ease-linear">
                 Accessories
               </a>

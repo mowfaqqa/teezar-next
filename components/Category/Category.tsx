@@ -13,14 +13,16 @@ const Category = ({func}:Props) => {
       <div className="bg-dresses bg-cover bg-center h-[60vh] flex flex-col justify-center items-center shadow-lg">
         <h2 className="font-dancing text-5xl text-gold-100 font-bold">Dresses</h2>
         <div onClick={func}>
-          <span className="cursor-pointer mt-3 px-4 py-1 bg-gold-100 font-semibold rounded ">
-            Book
-          </span>
+          <Link href="/book" passHref>
+            <span className="cursor-pointer mt-3 px-4 py-1 bg-gold-100 font-semibold rounded ">
+              Book
+            </span>
+          </Link>
         </div>
       </div>
       <div className="bg-accessories bg-cover bg-top h-[60vh] flex flex-col justify-center items-center shadow-lg">
         <h2 className="font-dancing text-5xl text-gold-100 font-bold">Nails By Teezar</h2>
-        <Link href="/products" passHref>
+        <Link href="/categories" passHref>
           <span className="cursor-pointer mt-3 px-4 py-1 bg-gold-100 font-semibold rounded">
             Shop Now
           </span>

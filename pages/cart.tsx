@@ -91,7 +91,7 @@ const Cart = () => {
                       />
                     </a>
                     <a
-                      href="https://api.whatsapp.com/send?phone=8166508998&text=Hello%20Teezar,%20I%27d%20like%20to%20make%20an%20enquiry..."
+                      href="https://api.whatsapp.com/send?phone=8166508998&text=Hello%20Teezar,%20I%27d%20like%20to%20make%20an%20order%20for%20product%20name______"
                       target="_blank"
                     >
                       <Phone

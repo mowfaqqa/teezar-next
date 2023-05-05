@@ -75,15 +75,15 @@ const Home: FC = ({ data }: InferGetStaticPropsType<typeof getStaticProps>) => {
             onClick={handleClick}
             className="flex mx-auto mt-4 gap-2 bg-gold-100 hover:bg-gold-300 transition-all duration-300 py-2 px-8 text-white font-semibold rounded shadow-md focus:outline-none"
           >
-            <p>Book an Appointment</p> <Calendar size={20} />
+            <p>Pay Appointment Fee</p> <Calendar size={20} />
           </button>
         </div>
       </div>
       <Category func={handleClick}/>
       <div className="text-center my-8">
-        <Link href="/products">
+        <Link href="/categories">
           <a className="bg-gold-100 hover:bg-gold-300 transition-all duration-300 py-2 px-8 text-white font-semibold rounded shadow-md">
-            Shop Now
+            Shop Accessories
           </a>
         </Link>
       </div>
